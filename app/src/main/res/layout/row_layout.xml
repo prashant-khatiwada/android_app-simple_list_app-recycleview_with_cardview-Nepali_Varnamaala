@@ -128,7 +128,7 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:id="@+id/information_btn"
+                    android:id="@+id/audio_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:background="#cfd8dc"
@@ -350,8 +350,8 @@
                         android:orientation="vertical"
                         android:id="@+id/compound_main_04"
                         android:focusable="false"
-                        android:paddingEnd="8dp"
-                        android:paddingStart="8dp">
+                        android:paddingEnd="4dp"
+                        android:paddingStart="4dp">
 
                         <TextView
                             android:id="@+id/compound_dev_04"
@@ -376,8 +376,8 @@
                         android:orientation="vertical"
                         android:id="@+id/compound_main_05"
                         android:focusable="false"
-                        android:paddingEnd="8dp"
-                        android:paddingStart="8dp">
+                        android:paddingEnd="4dp"
+                        android:paddingStart="4dp">
 
                         <TextView
                             android:id="@+id/compound_dev_05"

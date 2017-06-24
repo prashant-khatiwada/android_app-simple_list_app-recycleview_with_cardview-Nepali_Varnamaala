@@ -1,4 +1,4 @@
-package com.momobites.prash.varnamaala;
+package com.momobites.prash.varnamaala.ModelAdapters;
 
 import android.content.Context;
 import android.media.AudioManager;
@@ -7,10 +7,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import org.w3c.dom.Text;
+import com.momobites.prash.varnamaala.R;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -18,12 +17,14 @@ import java.util.List;
 
 import static android.content.Context.AUDIO_SERVICE;
 import static android.view.View.GONE;
-import static android.view.View.VISIBLE;
 
+/**
+ * Created by prash on 6/24/2017.
+ */
 
-public class Adapter extends RecyclerView.Adapter<ViewHolder> {
+public class LetterWordAdapter extends RecyclerView.Adapter<ViewHolder> {
 
-    List<Model> list = Collections.emptyList();
+    List<LetterWordModel> list = Collections.emptyList();
     Context context;
     private LayoutInflater inflater;
 
@@ -71,8 +72,8 @@ public class Adapter extends RecyclerView.Adapter<ViewHolder> {
         }
     }
 
-    public Adapter(Context context, ArrayList<Model> data) {
-    this.context = context;
+    public LetterWordAdapter(Context context, ArrayList<LetterWordModel> data) {
+        this.context = context;
         this.list = data;
         inflater = LayoutInflater.from(context);
 
@@ -100,48 +101,16 @@ public class Adapter extends RecyclerView.Adapter<ViewHolder> {
         viewHolder.DevgnagariWord.setText(list.get(position).getDevnagariId());
         viewHolder.EnglishWord.setText(list.get(position).getmEnglishId());
 
+        viewHolder.AdditionalDetail.setVisibility(GONE);
+        viewHolder.Compounnds.setVisibility(GONE);
 
-        /*For Loop to get 12 Array words/letters for Compounds*/
-        for (int i = 0; i < 12; i++) {
-             //String x = "K" + i;
-             //TextView y = (TextView) context.getString(x);
-             //viewHolder.y.setText(list.get(position).getmCompoundId(i));
-        }
-
-        /*Working Solution*/
-        /*Setting the word for each item*/
-        viewHolder.K1.setText(list.get(position).getmDevCompoundId(0));
-        viewHolder.K2.setText(list.get(position).getmDevCompoundId(1));
-        viewHolder.K3.setText(list.get(position).getmDevCompoundId(2));
-        viewHolder.K4.setText(list.get(position).getmDevCompoundId(3));
-        viewHolder.K5.setText(list.get(position).getmDevCompoundId(4));
-        viewHolder.K6.setText(list.get(position).getmDevCompoundId(5));
-        viewHolder.K7.setText(list.get(position).getmDevCompoundId(6));
-        viewHolder.K8.setText(list.get(position).getmDevCompoundId(7));
-        viewHolder.K9.setText(list.get(position).getmDevCompoundId(8));
-        viewHolder.K10.setText(list.get(position).getmDevCompoundId(9));
-        viewHolder.K11.setText(list.get(position).getmDevCompoundId(10));
-        viewHolder.K12.setText(list.get(position).getmDevCompoundId(11));
-        
-        /*Setting the word for each item*/
-        viewHolder.NepC1.setText(list.get(position).getmNepCompoundId(0));
-        viewHolder.NepC2.setText(list.get(position).getmNepCompoundId(1));
-        viewHolder.NepC3.setText(list.get(position).getmNepCompoundId(2));
-        viewHolder.NepC4.setText(list.get(position).getmNepCompoundId(3));
-        viewHolder.NepC5.setText(list.get(position).getmNepCompoundId(4));
-        viewHolder.NepC6.setText(list.get(position).getmNepCompoundId(5));
-        viewHolder.NepC7.setText(list.get(position).getmNepCompoundId(6));
-        viewHolder.NepC8.setText(list.get(position).getmNepCompoundId(7));
-        viewHolder.NepC9.setText(list.get(position).getmNepCompoundId(8));
-        viewHolder.NepC10.setText(list.get(position).getmNepCompoundId(9));
-        viewHolder.NepC11.setText(list.get(position).getmNepCompoundId(10));
-        viewHolder.NepC12.setText(list.get(position).getmNepCompoundId(11));
+        viewHolder.btn_compounds.setVisibility(GONE);
 
         // Create and setup the {@link AudioManager} to request audio focus
         mAudioManager = (AudioManager) context.getSystemService(AUDIO_SERVICE);
 
         /*On ImageView Button Press - for Audio*/
-        viewHolder.btn_info.setOnClickListener(new View.OnClickListener() {
+        viewHolder.btn_audio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -170,42 +139,23 @@ public class Adapter extends RecyclerView.Adapter<ViewHolder> {
 
         });
 
-        /*On ImageView Button Press - for Compounds*/
-        viewHolder.btn_compounds.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (viewHolder.Compounnds.getVisibility() == GONE){
-                    viewHolder.Compounnds.setVisibility(VISIBLE);
-
-                } else {
-                    viewHolder.Compounnds.setVisibility(GONE);
-                };
-
-            }
-
-        });
 
         /*On Item Click View*/
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (viewHolder.AdditionalDetail.getVisibility() == GONE){
-                    viewHolder.AdditionalDetail.setVisibility(VISIBLE);
+                if (viewHolder.DevgnagariWord.getTextSize() == 60){
+
                     viewHolder.DevgnagariWord.setTextSize(200);
+
                 } else {
-                    viewHolder.AdditionalDetail.setVisibility(GONE);
-                    viewHolder.Compounnds.setVisibility(GONE);
+
                     viewHolder.DevgnagariWord.setTextSize(60);
                 };
 
             }
         });
 
-        /*Additional Details*/
-        viewHolder.Aspiration.setText(list.get(position).getmAspiration());
-        viewHolder.Name.setText(list.get(position).getmName());
-        viewHolder.Pronunciation.setText(list.get(position).getmPronunciation());
-        viewHolder.ApproximatePronunciation.setText(list.get(position).getmApproxPronunciation());
 
     }
 

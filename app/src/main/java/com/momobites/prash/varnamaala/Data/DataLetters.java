@@ -1,15 +1,15 @@
-package com.momobites.prash.varnamaala;
+package com.momobites.prash.varnamaala.Data;
+
+import com.momobites.prash.varnamaala.ModelAdapters.ConsonantModel;
+import com.momobites.prash.varnamaala.ModelAdapters.LetterWordModel;
+import com.momobites.prash.varnamaala.R;
 
 import java.util.ArrayList;
 
-/**
- * Created by prash on 6/22/2017.
- */
+public class DataLetters {
+    public static ArrayList<ConsonantModel> getConsonants() {
 
-public class Data {
-    public static ArrayList<Model> getConsonants() {
-
-        ArrayList<Model> data = new ArrayList<>();
+        ArrayList<ConsonantModel> data = new ArrayList<>();
 
         String[] DevConsonants = {
                 "क", "ख", "ग", "घ", "ङ",
@@ -228,7 +228,7 @@ public class Data {
 
 
         for (int i = 0; i < DevConsonants.length; i++) {
-            data.add(new Model(
+            data.add(new ConsonantModel(
                     DevConsonants[i] ,
                     NepaliConsonants[i],
                     EnglishConsonants[i],
@@ -239,6 +239,178 @@ public class Data {
                     Name[i],
                     Pronunciation[i],
                     approximatePronunciation[i]
+                    )
+            );
+        }
+
+        return data;
+    }
+
+    public static ArrayList<LetterWordModel> getVowels() {
+
+        ArrayList<LetterWordModel> data = new ArrayList<>();
+
+        String[] DevConsonants = {
+                "अ", "आ", "इ", "ई",
+                "उ", "ऊ", "ए", "ऐ",
+                "अाे", "अाै", "अं", "अ:"
+        };
+        String[] NepaliConsonants = {
+                "a", "aa", "i", "ee",
+                "u", "oo", "ae", "aie",
+                "ao", "aou", "am", "ah"
+        };
+        String[] EnglishConsonants = {
+                "a", "aa", "i", "ee",
+                "u", "oo", "ae", "aie",
+                "ao", "aou", "am", "ah"
+        };
+
+
+        int Audio[] = {
+
+                R.raw.number_one,
+                R.raw.number_one,
+                R.raw.number_one,
+                R.raw.number_one,
+                R.raw.number_one,
+                R.raw.number_one,
+                R.raw.number_one,
+                R.raw.number_one,
+                R.raw.number_one,
+                R.raw.number_one,
+                R.raw.number_one,
+                R.raw.number_one,
+
+
+
+        };
+
+
+        for (int i = 0; i < DevConsonants.length; i++) {
+            data.add(new LetterWordModel(
+                            DevConsonants[i] ,
+                            NepaliConsonants[i],
+                            EnglishConsonants[i],
+                            /*Audio Resource*/
+                            Audio[i]
+                            /*Image Resource If any*/
+
+
+                    )
+            );
+        }
+
+        return data;
+    }
+
+    public static ArrayList<LetterWordModel> getNumbers() {
+
+        ArrayList<LetterWordModel> data = new ArrayList<>();
+
+        String[] DevConsonants = {
+                "१", "२", "३", "४", "५", "६", "७", "८", "९", "१०",
+                "११", "१२", "१३", "१४", "१५", "१६", "१७", "१८", "१९", "२०"
+        };
+        String[] NepaliConsonants = {
+                "ek", "dui", "teen", "chaar", "paanch", "cha", "saat", "aath", "nau", "dus",
+                "eghaar", "barha", "terha", "chauda", "pandhra", "sorha", "satra", "athara", "unnais", "bis"
+        };
+        String[] EnglishConsonants = {
+                "1", "2", "3", "4", "5", "6", "7", "8", "9", "10",
+                "11", "12", "13", "14", "15", "16", "17", "18", "19", "20"
+
+        };
+
+
+        int Audio[] = {
+
+                R.raw.number_one,
+                R.raw.number_one,
+                R.raw.number_one,
+                R.raw.number_one,
+                R.raw.number_one,
+                R.raw.number_one,
+                R.raw.number_one,
+                R.raw.number_one,
+                R.raw.number_one,
+                R.raw.number_one,
+
+                R.raw.number_one,
+                R.raw.number_one,
+                R.raw.number_one,
+                R.raw.number_one,
+                R.raw.number_one,
+                R.raw.number_one,
+                R.raw.number_one,
+                R.raw.number_one,
+                R.raw.number_one,
+                R.raw.number_one,
+
+
+
+        };
+
+
+        for (int i = 0; i < DevConsonants.length; i++) {
+            data.add(new LetterWordModel(
+                            DevConsonants[i] ,
+                            NepaliConsonants[i],
+                            EnglishConsonants[i],
+                            /*Audio Resource*/
+                            Audio[i]
+                            /*Image Resource If any*/
+
+
+                    )
+            );
+        }
+
+        return data;
+    }
+
+    public static ArrayList<LetterWordModel> getNotations() {
+
+        ArrayList<LetterWordModel> data = new ArrayList<>();
+
+        String[] DevConsonants = {
+                "१", "१०", "१००", "१०००", "१०,०००", "१००,०००", "१,००,०००", "१०,००,०००"
+        };
+        String[] NepaliConsonants = {
+                "ek", "das", "saya", "hajar", "das hajar", "lakh", "das lakh", "crore"
+
+        };
+        String[] EnglishConsonants = {
+                "1", "10", "100", "1000", "10,000", "100,000", "1,00,000", "10,00,000"
+
+        };
+
+
+        int Audio[] = {
+
+                R.raw.number_one,
+                R.raw.number_one,
+                R.raw.number_one,
+                R.raw.number_one,
+                R.raw.number_one,
+                R.raw.number_one,
+                R.raw.number_one,
+                R.raw.number_one,
+
+
+        };
+
+
+        for (int i = 0; i < DevConsonants.length; i++) {
+            data.add(new LetterWordModel(
+                            DevConsonants[i] ,
+                            NepaliConsonants[i],
+                            EnglishConsonants[i],
+                            /*Audio Resource*/
+                            Audio[i]
+                            /*Image Resource If any*/
+
+
                     )
             );
         }

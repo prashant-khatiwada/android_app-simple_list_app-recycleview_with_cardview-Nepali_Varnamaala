@@ -1,10 +1,10 @@
-package com.momobites.prash.varnamaala;
+package com.momobites.prash.varnamaala.ModelAdapters;
 
 /**
  * Created by prash on 6/22/2017.
  */
 
-public class Model {
+public class ConsonantModel {
 
     /** String resource IDs */
     private String mNepaliId;
@@ -30,12 +30,12 @@ public class Model {
     private int mImageResourceId = NO_IMAGE_PROVIDED;
     private static final int NO_IMAGE_PROVIDED = -1;
 
-    /*Model Object Constructor with no Image Handler*/
-    public Model(String DevId, String NepId, String EngId,
-                 String [] CompoundDevResourceId,
-                 String [] CompoundNepResourceId,
-                 int audioResourceId,
-                 String Aspiration, String Name, String Pronunciation, String ApproxPronunciation){
+    /*ConsonantModel Object Constructor with no Image Handler*/
+    public ConsonantModel(String DevId, String NepId, String EngId,
+                          String [] CompoundDevResourceId,
+                          String [] CompoundNepResourceId,
+                          int audioResourceId,
+                          String Aspiration, String Name, String Pronunciation, String ApproxPronunciation){
         mDevId = DevId;
         mEnglishId = EngId;
         mNepaliId = NepId;
@@ -53,13 +53,13 @@ public class Model {
 
     }
 
-    /*Model Object Constructor with  Image Handler*/
-    public Model(String DevId, String NepId, String EngId,
-                 String [] CompoundDevResourceId,
-                 String [] CompoundNepResourceId,
-                 int audioResourceId,
-                 int ImageResourceId,
-                 String Aspiration, String Name, String Pronunciation, String ApproxPronunciation){
+    /*ConsonantModel Object Constructor with  Image Handler*/
+    public ConsonantModel(String DevId, String NepId, String EngId,
+                          String [] CompoundDevResourceId,
+                          String [] CompoundNepResourceId,
+                          int audioResourceId,
+                          int ImageResourceId,
+                          String Aspiration, String Name, String Pronunciation, String ApproxPronunciation){
         mDevId = DevId;
         mEnglishId = EngId;
         mNepaliId = NepId;

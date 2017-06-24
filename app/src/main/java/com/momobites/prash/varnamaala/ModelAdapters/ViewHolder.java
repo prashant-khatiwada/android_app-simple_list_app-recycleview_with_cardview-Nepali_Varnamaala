@@ -1,15 +1,15 @@
-package com.momobites.prash.varnamaala;
+package com.momobites.prash.varnamaala.ModelAdapters;
 
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.Button;
 import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ScrollView;
 import android.widget.TextView;
+
+import com.momobites.prash.varnamaala.R;
 
 
 public class ViewHolder extends RecyclerView.ViewHolder {
@@ -20,7 +20,7 @@ public class ViewHolder extends RecyclerView.ViewHolder {
     TextView EnglishWord;
 
     /*Buttons*/
-    ImageView btn_info;
+    ImageView btn_audio;
     ImageView btn_compounds;
 
     /*Views*/
@@ -77,7 +77,7 @@ public class ViewHolder extends RecyclerView.ViewHolder {
         EnglishWord = (TextView) itemView.findViewById(R.id.eng_textview);
 
         /*ImageView Buttons*/
-        btn_info = (ImageView) itemView.findViewById(R.id.information_btn);
+        btn_audio = (ImageView) itemView.findViewById(R.id.audio_btn);
         btn_compounds = (ImageView) itemView.findViewById(R.id.compounds_btn);
 
         /*Image*/
