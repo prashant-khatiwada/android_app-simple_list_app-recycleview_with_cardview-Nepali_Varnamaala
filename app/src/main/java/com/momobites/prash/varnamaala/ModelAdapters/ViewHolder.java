@@ -27,6 +27,7 @@ public class ViewHolder extends RecyclerView.ViewHolder {
     LinearLayout AdditionalDetail;
     ConstraintLayout Constraint;
     HorizontalScrollView Compounnds;
+    View listContainer;
 
     /*Image*/
     ImageView PrimaryImage;
@@ -88,6 +89,9 @@ public class ViewHolder extends RecyclerView.ViewHolder {
         AdditionalDetail = (LinearLayout) itemView.findViewById(R.id.additional_details);
         Compounnds = (HorizontalScrollView) itemView.findViewById(R.id.compounds);
         Constraint = (ConstraintLayout) itemView.findViewById(R.id.imageView_holder);
+
+        /*Container View*/
+        listContainer = itemView.findViewWithTag(R.id.container);
 
         /*Details*/
         Aspiration = (TextView) itemView.findViewById(R.id.aspiration);

@@ -30,7 +30,7 @@
         <activity android:name=".CategoryOne.Notations"
             android:label="Numbers"/>
 
-        <activity android:name=".CatOneActivity"
+        <activity android:name=".CategoryOne.CatOneActivity"
             android:label="Vowels, Consonants and Numbers"/>
 
     </application>

@@ -1,4 +1,4 @@
-package com.momobites.prash.varnamaala;
+package com.momobites.prash.varnamaala.CategoryOne;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -10,7 +10,9 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+
 import com.momobites.prash.varnamaala.ModelAdapters.MenuAdapter;
+import com.momobites.prash.varnamaala.R;
 
 /**
  * Created by prash on 6/24/2017.
@@ -68,9 +70,13 @@ public class CatOneActivity extends AppCompatActivity {
 
             switch (position) {
                 case 0:
-                    return new Fragment();
+                    return new Consonants();
                 case 1:
-                    return new Fragment();
+                    return new Vowels();
+                case 2:
+                    return new Numbers();
+                case 3:
+                    return new Notations();
 
             }
 
@@ -79,8 +85,10 @@ public class CatOneActivity extends AppCompatActivity {
 
         // Set Tab Titles and the Number of Tabs
         String tabTitles[] = new String[]{
-                "First Tab",
-                "Second Tab"
+                "Consonants",
+                "Vowels",
+                "Numbers",
+                "Notation"
         };
 
         @Override

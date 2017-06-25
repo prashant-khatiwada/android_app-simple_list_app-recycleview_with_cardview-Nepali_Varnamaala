@@ -17,6 +17,8 @@ import java.util.List;
 
 import static android.content.Context.AUDIO_SERVICE;
 import static android.view.View.GONE;
+import static com.momobites.prash.varnamaala.ModelAdapters.AudioPlayback.mCompletionListener;
+import static com.momobites.prash.varnamaala.ModelAdapters.AudioPlayback.mOnAudioFocusChangeListener;
 
 /**
  * Created by prash on 6/24/2017.
@@ -33,44 +35,7 @@ public class LetterWordAdapter extends RecyclerView.Adapter<ViewHolder> {
     /** Handles audio focus when playing a sound file */
     private AudioManager mAudioManager;
 
-    // This listener gets triggered whenever the audio focus changes
-    private AudioManager.OnAudioFocusChangeListener mOnAudioFocusChangeListener = new AudioManager.OnAudioFocusChangeListener() {
-        @Override
-        public void onAudioFocusChange(int focusChange) {
-            if (focusChange == AudioManager.AUDIOFOCUS_LOSS_TRANSIENT ||
-                    focusChange == AudioManager.AUDIOFOCUS_LOSS_TRANSIENT_CAN_DUCK) {
-                // When transient audio lapse - pause the app
-                mMediaPlayer.pause();
-                mMediaPlayer.seekTo(0);
-            } else if (focusChange == AudioManager.AUDIOFOCUS_GAIN) {
-                // When audio returns
-                mMediaPlayer.start();
-            } else if (focusChange == AudioManager.AUDIOFOCUS_LOSS) {
-                // When the audio is complete
-                // Stop playback and clean up resources
-                releaseMediaPlayer();
-            }
-        }
-    };
 
-    // Runs when MediaPlayer is through running the audio
-    private MediaPlayer.OnCompletionListener mCompletionListener = new MediaPlayer.OnCompletionListener() {
-        @Override
-        public void onCompletion(MediaPlayer mediaPlayer) {
-            // Now that the sound file has finished playing, release the media player resources.
-            releaseMediaPlayer();
-        }
-    };
-
-    // Clean Media Player Resource
-    private void releaseMediaPlayer() {
-        // If the media player is not null, then it may be currently playing a sound.
-        if (mMediaPlayer != null) {
-            mMediaPlayer.release();
-            mMediaPlayer = null;
-            mAudioManager.abandonAudioFocus(mOnAudioFocusChangeListener);
-        }
-    }
 
     public LetterWordAdapter(Context context, ArrayList<LetterWordModel> data) {
         this.context = context;
@@ -116,11 +81,11 @@ public class LetterWordAdapter extends RecyclerView.Adapter<ViewHolder> {
 
                 // Release the media player if it currently exists because we are about to
                 // play a different sound file
-                releaseMediaPlayer();
+                AudioPlayback.releaseMediaPlayer();
                 // Get the  object at the given position the user clicked on
                 final int  x = list.get(position).getmAudioResourceId();
 
-                Toast.makeText(context,  x, Toast.LENGTH_SHORT).show();
+                // Toast.makeText(context,  x, Toast.LENGTH_SHORT).show();
 
                 // Request audio focus
                 int result = mAudioManager.requestAudioFocus(mOnAudioFocusChangeListener,

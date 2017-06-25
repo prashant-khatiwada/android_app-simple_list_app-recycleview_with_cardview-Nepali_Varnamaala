@@ -186,8 +186,8 @@ public class DataLetters {
         int Audio[] = {
 
                 R.raw.number_one,
-                R.raw.number_one,
-                R.raw.number_one,
+                R.raw.number_two,
+                R.raw.number_three,
                 R.raw.number_one,
                 R.raw.number_one,
                 R.raw.number_one,
@@ -326,15 +326,15 @@ public class DataLetters {
         int Audio[] = {
 
                 R.raw.number_one,
-                R.raw.number_one,
-                R.raw.number_one,
-                R.raw.number_one,
-                R.raw.number_one,
-                R.raw.number_one,
-                R.raw.number_one,
-                R.raw.number_one,
-                R.raw.number_one,
-                R.raw.number_one,
+                R.raw.number_two,
+                R.raw.number_three,
+                R.raw.number_four,
+                R.raw.number_five,
+                R.raw.number_six,
+                R.raw.number_seven,
+                R.raw.number_eight,
+                R.raw.number_nine,
+                R.raw.number_ten,
 
                 R.raw.number_one,
                 R.raw.number_one,

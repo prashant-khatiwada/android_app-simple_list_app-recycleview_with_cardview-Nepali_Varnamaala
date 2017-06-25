@@ -6,10 +6,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
-import com.momobites.prash.varnamaala.CategoryOne.Consonants;
-import com.momobites.prash.varnamaala.CategoryOne.Notations;
-import com.momobites.prash.varnamaala.CategoryOne.Numbers;
-import com.momobites.prash.varnamaala.CategoryOne.Vowels;
+import com.momobites.prash.varnamaala.CategoryOne.CatOneActivity;
 import com.momobites.prash.varnamaala.ModelAdapters.MenuAdapter;
 import com.momobites.prash.varnamaala.ModelAdapters.MenuModel;
 
@@ -29,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         recyclerView = (RecyclerView) findViewById(R.id.recycleView);
-        adapter = new MenuAdapter(this, MenuData.getMenu());
+        adapter = new MenuAdapter(this, MenuData.getMenu(), R.color.colorAccent);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this)); // Vertical Orientation By Default
 
@@ -43,16 +40,21 @@ public class MainActivity extends AppCompatActivity {
             ArrayList<MenuModel> data = new ArrayList<>();
 
 
-            String[] DevConsonants = { "व्यन्जन वर्ण", "स्वर वर्ण", "अंक १-२०", "अंक नोटेसन", "CatOneActivity"
+            String[] DevConsonants = { "वर्ण र अंक"
             };
 
-            String[] NepaliConsonants = { "byanjan barna", "swor barna", "anka ek - beis", "anka notation", "Fragment Test"
+            String[] NepaliConsonants = { "barna ra anka"
             };
 
-            String[] EnglishConsonants = { "Consonants", "Vowels", "Numbers 1 to 20", "Number Notation", "Fragment Tezt"
+            String[] EnglishConsonants = { "Letters and Numbers"
             };
 
-            Class[] Class = { Consonants.class, Vowels.class, Numbers.class, Notations.class, CatOneActivity.class
+            Class[] Class = { CatOneActivity.class
+            };
+
+            int [] Image = {
+                    R.drawable.color_gray
+
             };
 
 
@@ -61,7 +63,8 @@ public class MainActivity extends AppCompatActivity {
                                 DevConsonants[i],
                                 NepaliConsonants[i],
                                 EnglishConsonants[i],
-                                Class[i]
+                                Class[i],
+                                Image[i]
 
                         )
                 );

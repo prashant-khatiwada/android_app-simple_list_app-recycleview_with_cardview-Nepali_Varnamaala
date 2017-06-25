@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import static android.R.attr.x;
 import static android.content.Context.AUDIO_SERVICE;
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
@@ -27,48 +28,11 @@ public class ConsonantAdapter extends RecyclerView.Adapter<ViewHolder> {
     private LayoutInflater inflater;
 
     /** Handles playback of all the sound files */
-    private MediaPlayer mMediaPlayer;
+    private static MediaPlayer mMediaPlayer;
     /** Handles audio focus when playing a sound file */
-    private AudioManager mAudioManager;
+    private static AudioManager mAudioManager;
 
-    // This listener gets triggered whenever the audio focus changes
-    private AudioManager.OnAudioFocusChangeListener mOnAudioFocusChangeListener = new AudioManager.OnAudioFocusChangeListener() {
-        @Override
-        public void onAudioFocusChange(int focusChange) {
-            if (focusChange == AudioManager.AUDIOFOCUS_LOSS_TRANSIENT ||
-                    focusChange == AudioManager.AUDIOFOCUS_LOSS_TRANSIENT_CAN_DUCK) {
-                // When transient audio lapse - pause the app
-                mMediaPlayer.pause();
-                mMediaPlayer.seekTo(0);
-            } else if (focusChange == AudioManager.AUDIOFOCUS_GAIN) {
-                // When audio returns
-                mMediaPlayer.start();
-            } else if (focusChange == AudioManager.AUDIOFOCUS_LOSS) {
-                // When the audio is complete
-                // Stop playback and clean up resources
-                releaseMediaPlayer();
-            }
-        }
-    };
 
-    // Runs when MediaPlayer is through running the audio
-    private MediaPlayer.OnCompletionListener mCompletionListener = new MediaPlayer.OnCompletionListener() {
-        @Override
-        public void onCompletion(MediaPlayer mediaPlayer) {
-            // Now that the sound file has finished playing, release the media player resources.
-            releaseMediaPlayer();
-        }
-    };
-
-    // Clean Media Player Resource
-    private void releaseMediaPlayer() {
-        // If the media player is not null, then it may be currently playing a sound.
-        if (mMediaPlayer != null) {
-            mMediaPlayer.release();
-            mMediaPlayer = null;
-            mAudioManager.abandonAudioFocus(mOnAudioFocusChangeListener);
-        }
-    }
 
     public ConsonantAdapter(Context context, ArrayList<ConsonantModel> data) {
     this.context = context;
@@ -139,23 +103,22 @@ public class ConsonantAdapter extends RecyclerView.Adapter<ViewHolder> {
 
                 // Release the media player if it currently exists because we are about to
                 // play a different sound file
-                releaseMediaPlayer();
+                AudioPlayback.releaseMediaPlayer();
                 // Get the  object at the given position the user clicked on
-                final int  x = list.get(position).getmAudioResourceId();
-
-                Toast.makeText(context,  x, Toast.LENGTH_SHORT).show();
+                final int  AudioObject = list.get(position).getmAudioResourceId();
+                // Toast.makeText(context,  AudioObject, Toast.LENGTH_SHORT).show();
 
                 // Request audio focus
-                int result = mAudioManager.requestAudioFocus(mOnAudioFocusChangeListener,
+                int result = mAudioManager.requestAudioFocus(AudioPlayback.mOnAudioFocusChangeListener,
                         AudioManager.STREAM_MUSIC, AudioManager.AUDIOFOCUS_GAIN_TRANSIENT);
 
                 if (result == AudioManager.AUDIOFOCUS_REQUEST_GRANTED) {
                     // We have audio focus now.
-                    mMediaPlayer = MediaPlayer.create( context, x );
+                    mMediaPlayer = MediaPlayer.create( context, AudioObject );
                     // Start the audio file
                     mMediaPlayer.start();
                     // Setup a listener on the media player
-                    mMediaPlayer.setOnCompletionListener(mCompletionListener);
+                    mMediaPlayer.setOnCompletionListener(AudioPlayback.mCompletionListener);
                 }
 
             }

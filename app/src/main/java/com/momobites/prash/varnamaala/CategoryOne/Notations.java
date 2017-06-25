@@ -1,12 +1,18 @@
 package com.momobites.prash.varnamaala.CategoryOne;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 
 import com.momobites.prash.varnamaala.Data.DataLetters;
+import com.momobites.prash.varnamaala.ModelAdapters.AudioPlayback;
+import com.momobites.prash.varnamaala.ModelAdapters.ConsonantAdapter;
 import com.momobites.prash.varnamaala.ModelAdapters.LetterWordAdapter;
 import com.momobites.prash.varnamaala.R;
 
@@ -14,25 +20,39 @@ import com.momobites.prash.varnamaala.R;
  * Created by prash on 6/24/2017.
  */
 
-public class Notations extends AppCompatActivity {
+public class Notations extends Fragment {
+
+    public Notations(){
+        // Required Empty public Constructor
+    }
 
     RecyclerView recyclerView;
-
+    Context context;
     LetterWordAdapter adapter;
-    View view;
-
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
 
-        recyclerView = (RecyclerView) findViewById(R.id.recycleView);
-        adapter = new LetterWordAdapter(this, DataLetters.getNotations());
+        // Inflate layout for this Fragment
+        View rootView = inflater.inflate(R.layout.activity_main, container, false);
+        // Fix the RecycleView to the inflated Fragment
+        recyclerView = (RecyclerView) rootView.findViewById(R.id.recycleView);
+        // Setting Up Data - fill data
+        adapter = new LetterWordAdapter(getContext(), DataLetters.getNotations());
+        // Set Adapter
         recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this)); // Vertical Orientation By Default
-
-
+        // Set Layout Manager
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity())); // Vertical Orientation By Default
+        // Return
+        return rootView;
 
     }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        AudioPlayback.releaseMediaPlayer();
+    }
+
 }
