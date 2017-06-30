@@ -7,7 +7,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.momobites.prash.varnamaala.R;
 
@@ -17,27 +16,66 @@ import java.util.List;
 
 import static android.content.Context.AUDIO_SERVICE;
 import static android.view.View.GONE;
-import static com.momobites.prash.varnamaala.ModelAdapters.AudioPlayback.mCompletionListener;
-import static com.momobites.prash.varnamaala.ModelAdapters.AudioPlayback.mOnAudioFocusChangeListener;
 
 /**
- * Created by prash on 6/24/2017.
+ * Created by prash on 6/30/2017.
  */
 
-public class LetterWordAdapter extends RecyclerView.Adapter<ViewHolder> {
+public class DrawAdapter extends RecyclerView.Adapter<ViewHolder> {
 
-    List<LetterWordModel> list = Collections.emptyList();
+    List<LetterModel> list = Collections.emptyList();
     Context context;
     private LayoutInflater inflater;
+
+
 
     /** Handles playback of all the sound files */
     private MediaPlayer mMediaPlayer;
     /** Handles audio focus when playing a sound file */
     private AudioManager mAudioManager;
 
+    // This listener gets triggered whenever the audio focus changes
+    private AudioManager.OnAudioFocusChangeListener mOnAudioFocusChangeListener = new AudioManager.OnAudioFocusChangeListener() {
+        @Override
+        public void onAudioFocusChange(int focusChange) {
+            if (focusChange == AudioManager.AUDIOFOCUS_LOSS_TRANSIENT ||
+                    focusChange == AudioManager.AUDIOFOCUS_LOSS_TRANSIENT_CAN_DUCK) {
+                // When transient audio lapse - pause the app
+                mMediaPlayer.pause();
+                mMediaPlayer.seekTo(0);
+            } else if (focusChange == AudioManager.AUDIOFOCUS_GAIN) {
+                // When audio returns
+                mMediaPlayer.start();
+            } else if (focusChange == AudioManager.AUDIOFOCUS_LOSS) {
+                // When the audio is complete
+                // Stop playback and clean up resources
+                releaseMediaPlayer();
+            }
+        }
+    };
+
+    // Runs when MediaPlayer is through running the audio
+    private MediaPlayer.OnCompletionListener mCompletionListener = new MediaPlayer.OnCompletionListener() {
+        @Override
+        public void onCompletion(MediaPlayer mediaPlayer) {
+            // Now that the sound file has finished playing, release the media player resources.
+            releaseMediaPlayer();
+        }
+    };
+
+    // Clean Media Player Resource
+    private void releaseMediaPlayer() {
+        // If the media player is not null, then it may be currently playing a sound.
+        if (mMediaPlayer != null) {
+            mMediaPlayer.release();
+            mMediaPlayer = null;
+            mAudioManager.abandonAudioFocus(mOnAudioFocusChangeListener);
+        }
+    }
 
 
-    public LetterWordAdapter(Context context, ArrayList<LetterWordModel> data) {
+
+    public DrawAdapter(Context context, ArrayList<LetterModel> data) {
         this.context = context;
         this.list = data;
         inflater = LayoutInflater.from(context);
@@ -64,28 +102,37 @@ public class LetterWordAdapter extends RecyclerView.Adapter<ViewHolder> {
     public void onBindViewHolder(final ViewHolder viewHolder, final int position) {
         viewHolder.NepaliWord.setText(list.get(position).getNepaliTranslationId());
         viewHolder.DevgnagariWord.setText(list.get(position).getDevnagariId());
-        viewHolder.EnglishWord.setText(list.get(position).getmEnglishId());
 
-        viewHolder.AdditionalDetail.setVisibility(GONE);
-        viewHolder.Compounnds.setVisibility(GONE);
 
-        viewHolder.btn_compounds.setVisibility(GONE);
+        //LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(WRAP_CONTENT, WRAP_CONTENT);
+        //viewHolder.row_listContainer.setLayoutParams(layoutParams);
+
+        // Things to Show
+        viewHolder.DevgnagariWord.setTextSize(40);
+        viewHolder.NepaliWord.setTextSize(16);
+
+
+        // Things to Hide
+        viewHolder.EnglishWord.setVisibility(GONE);
+        viewHolder.AdditionalDetails.setVisibility(GONE);
+        viewHolder.PrimaryImage.setVisibility(GONE);
+        viewHolder.SecondaryImage.setVisibility(GONE);
+        viewHolder.btn_additional_details.setVisibility(GONE);
 
         // Create and setup the {@link AudioManager} to request audio focus
         mAudioManager = (AudioManager) context.getSystemService(AUDIO_SERVICE);
 
-        /*On ImageView Button Press - for Audio*/
-        viewHolder.btn_audio.setOnClickListener(new View.OnClickListener() {
+        /*On Item Click for Audio*/
+        viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 // Release the media player if it currently exists because we are about to
                 // play a different sound file
-                AudioPlayback.releaseMediaPlayer();
+                releaseMediaPlayer();
                 // Get the  object at the given position the user clicked on
-                final int  x = list.get(position).getmAudioResourceId();
-
-                // Toast.makeText(context,  x, Toast.LENGTH_SHORT).show();
+                final int  AudioObject = list.get(position).getmAudioResourceId();
+                // Toast.makeText(context,  AudioObject, Toast.LENGTH_SHORT).show();
 
                 // Request audio focus
                 int result = mAudioManager.requestAudioFocus(mOnAudioFocusChangeListener,
@@ -93,7 +140,7 @@ public class LetterWordAdapter extends RecyclerView.Adapter<ViewHolder> {
 
                 if (result == AudioManager.AUDIOFOCUS_REQUEST_GRANTED) {
                     // We have audio focus now.
-                    mMediaPlayer = MediaPlayer.create( context, x );
+                    mMediaPlayer = MediaPlayer.create( context, AudioObject );
                     // Start the audio file
                     mMediaPlayer.start();
                     // Setup a listener on the media player
@@ -101,26 +148,7 @@ public class LetterWordAdapter extends RecyclerView.Adapter<ViewHolder> {
                 }
 
             }
-
         });
-
-
-        /*On Item Click View*/
-        viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (viewHolder.DevgnagariWord.getTextSize() == 60){
-
-                    viewHolder.DevgnagariWord.setTextSize(200);
-
-                } else {
-
-                    viewHolder.DevgnagariWord.setTextSize(60);
-                };
-
-            }
-        });
-
 
     }
 

@@ -7,6 +7,7 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
+        android:screenOrientation="portrait"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
@@ -18,20 +19,17 @@
         </activity>
 
 
-        <activity android:name=".CategoryOne.Consonants"
-            android:label="Consonants"/>
-
-        <activity android:name=".CategoryOne.Vowels"
-            android:label="Vowels"/>
-
-        <activity android:name=".CategoryOne.Numbers"
-            android:label="Numbers"/>
-
-        <activity android:name=".CategoryOne.Notations"
-            android:label="Numbers"/>
-
         <activity android:name=".CategoryOne.CatOneActivity"
-            android:label="Vowels, Consonants and Numbers"/>
+            android:label="Letters and Numbers"/>
+
+        <activity android:name=".Drawing.DrawBoard"
+            android:label="Consonants and Vowels"/>
+
+        <activity android:name=".CategoryTwo.CatTwoActivity"
+            android:label="Relations"/>
+
+        <activity android:name=".CategoryThree.CatThreeActivity"
+            android:label="Animals and Bird"/>
 
     </application>
 

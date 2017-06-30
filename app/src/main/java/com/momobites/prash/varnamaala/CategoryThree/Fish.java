@@ -1,8 +1,6 @@
-package com.momobites.prash.varnamaala.CategoryOne;
+package com.momobites.prash.varnamaala.CategoryThree;
 
 import android.content.Context;
-import android.media.AudioManager;
-import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -11,23 +9,24 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.momobites.prash.varnamaala.Data.DataLetters;
-import com.momobites.prash.varnamaala.ModelAdapters.LetterAdapter;
+import com.momobites.prash.varnamaala.Data.DataAnimals;
+import com.momobites.prash.varnamaala.ModelAdapters.WordAdapter;
 import com.momobites.prash.varnamaala.R;
 
+/**
+ * Created by prash on 6/28/2017.
+ */
 
+public class Fish extends Fragment {
 
-
-public class Consonants extends Fragment {
-
-    public Consonants(){
+    public Fish(){
         // Required Empty public Constructor
     }
 
+
     RecyclerView recyclerView;
     Context context;
-    LetterAdapter adapter;
-
+    WordAdapter adapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -38,11 +37,14 @@ public class Consonants extends Fragment {
         // Fix the RecycleView to the inflated Fragment
         recyclerView = (RecyclerView) rootView.findViewById(R.id.recycleView);
         // Setting Up Data - fill data
-        adapter = new LetterAdapter(getContext(), DataLetters.getConsonants());
+        adapter = new WordAdapter(getContext(), DataAnimals.getFish());
         // Set Adapter
         recyclerView.setAdapter(adapter);
         // Set Layout Manager
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity())); // Vertical Orientation By Default
+
+        // Vertical Orientation By Default
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+
         // Return
         return rootView;
 
@@ -51,7 +53,6 @@ public class Consonants extends Fragment {
     @Override
     public void onStop() {
         super.onStop();
-
     }
 
 }

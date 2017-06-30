@@ -3,7 +3,6 @@ package com.momobites.prash.varnamaala.CategoryOne;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -11,10 +10,12 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.momobites.prash.varnamaala.Data.DataLetters;
-import com.momobites.prash.varnamaala.ModelAdapters.AudioPlayback;
-import com.momobites.prash.varnamaala.ModelAdapters.ConsonantAdapter;
-import com.momobites.prash.varnamaala.ModelAdapters.LetterWordAdapter;
+import com.momobites.prash.varnamaala.ModelAdapters.WordAdapter;
+import com.momobites.prash.varnamaala.ModelAdapters.WordModel;
+import com.momobites.prash.varnamaala.ModelAdapters.ViewHolder;
 import com.momobites.prash.varnamaala.R;
+
+import java.util.List;
 
 /**
  * Created by prash on 6/24/2017.
@@ -25,10 +26,11 @@ public class Notations extends Fragment {
     public Notations(){
         // Required Empty public Constructor
     }
-
+    ViewHolder viewHolder;
     RecyclerView recyclerView;
     Context context;
-    LetterWordAdapter adapter;
+    WordAdapter adapter;
+    List<WordModel> list;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -39,7 +41,7 @@ public class Notations extends Fragment {
         // Fix the RecycleView to the inflated Fragment
         recyclerView = (RecyclerView) rootView.findViewById(R.id.recycleView);
         // Setting Up Data - fill data
-        adapter = new LetterWordAdapter(getContext(), DataLetters.getNotations());
+        adapter = new WordAdapter(getContext(), DataLetters.getNotations());
         // Set Adapter
         recyclerView.setAdapter(adapter);
         // Set Layout Manager
@@ -47,12 +49,14 @@ public class Notations extends Fragment {
         // Return
         return rootView;
 
+        
+
+
     }
 
     @Override
     public void onStop() {
         super.onStop();
-        AudioPlayback.releaseMediaPlayer();
     }
 
 }

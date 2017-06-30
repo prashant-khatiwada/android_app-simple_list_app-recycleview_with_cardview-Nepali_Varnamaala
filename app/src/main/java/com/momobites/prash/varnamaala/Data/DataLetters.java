@@ -1,15 +1,15 @@
 package com.momobites.prash.varnamaala.Data;
 
-import com.momobites.prash.varnamaala.ModelAdapters.ConsonantModel;
-import com.momobites.prash.varnamaala.ModelAdapters.LetterWordModel;
+import com.momobites.prash.varnamaala.ModelAdapters.LetterModel;
+import com.momobites.prash.varnamaala.ModelAdapters.WordModel;
 import com.momobites.prash.varnamaala.R;
 
 import java.util.ArrayList;
 
 public class DataLetters {
-    public static ArrayList<ConsonantModel> getConsonants() {
+    public static ArrayList<LetterModel> getConsonants() {
 
-        ArrayList<ConsonantModel> data = new ArrayList<>();
+        ArrayList<LetterModel> data = new ArrayList<>();
 
         String[] DevConsonants = {
                 "क", "ख", "ग", "घ", "ङ",
@@ -67,14 +67,14 @@ public class DataLetters {
         };
 
         String[] Pronunciation = {
-                "k", "kh", "g" , "gh", "ng",
-                "ch", "chh", "j", "jh", "yn",
-                "t", "tth", "d", "dh", "an",
-                "t", "th", "dh", "dhh", "n",
-                "p", "ph", "b", "bh", "m",
-                "y", "r", "l", "w", "s",
-                "khh", "sh", "h", "chy", "tr",
-                "gy"
+                "unaspirated voiceless velar stop", "aspirated voiceless velar stop", "unaspirated voiced velar stop" , "aspirated voiced velar stop", "velar nasal",
+                "unaspirated voiceless palatal stop", "aspirated voiceless palatal stop", "unaspirated voiced palatal stop" , "aspirated voiced palatal stop", "palatal nasal",
+                "anaspirated voiceless retroflex stop", "aspirated voiceless retroflex stop", "anaspirated voiced retroflex stop", "aspirated voiced retroflex stop", "retroflex nasal",
+                "anaspirated voiceless dental stop", "aspirated voiceless dental stop", "anaspirated voiced dental stop", "aspirated voiced dental stop", "dental nasal",
+                "anaspirated voiceless bilabial stop", "aspirated voiceless bilabial stop", "anaspirated voiced bilabial stop", "aspirated voiced bilabial stop", "bilabial nasal",
+                "palatal glide", "alveolar liquid", "alveolar liquid", "velar glide", "palatal fricative",
+                "palatal retroflex", "dental fricative", "glottal fricative",
+                "complex segment (k+s+y)", "complex segment (t+r)", "complex segment (g+y)"
 
         };
 
@@ -228,7 +228,7 @@ public class DataLetters {
 
 
         for (int i = 0; i < DevConsonants.length; i++) {
-            data.add(new ConsonantModel(
+            data.add(new LetterModel(
                     DevConsonants[i] ,
                     NepaliConsonants[i],
                     EnglishConsonants[i],
@@ -246,9 +246,9 @@ public class DataLetters {
         return data;
     }
 
-    public static ArrayList<LetterWordModel> getVowels() {
+    public static ArrayList<LetterModel> getVowels() {
 
-        ArrayList<LetterWordModel> data = new ArrayList<>();
+        ArrayList<LetterModel> data = new ArrayList<>();
 
         String[] DevConsonants = {
                 "अ", "आ", "इ", "ई",
@@ -264,6 +264,139 @@ public class DataLetters {
                 "a", "aa", "i", "ee",
                 "u", "oo", "ae", "aie",
                 "ao", "aou", "am", "ah"
+        };
+
+        String[] Aspiration = {
+                "Guttural", "Guttural", "Palatal", "Palatal",
+                "Labials", "Labials", "Palatoguttural", "Palatoguttural",
+                "Labioguttural", "Labioguttural", " anusvāra", "visarga"
+        };
+
+        String[] Name = {
+                "a kāra", "aa kāra", " i kāra", "ee kāra",
+                "u kāra", "oo kāra", "ae kāra", "aie kāra",
+                "ao kāra", "aou kāra", "am kāra", "aha kāra"
+
+        };
+
+        String[] Pronunciation = {
+                "low back", "low back", "front high", "front high",
+                "back high", "back high", "mid front", "dipthong (a+i)",
+                "mid back", "dipthong(a+u / a+w)", "low back(nasal)", "low back(lengthened)"
+
+        };
+
+        String[] approximatePronunciation = {
+                "a", "aa", "i", "ee",
+                "u", "oo", "ae", "aie",
+                "ao", "aou", "am", "ah"
+
+        };
+
+
+        String [] [] DevCompounds = {
+                {"क", "ख", "ग", "घ", "ङ","च", "छ", "ज", "झ", "ञ", 
+                        "ट", "ठ", "ड", "ढ", "ण", "त", "थ", "द", "ध", "न",
+                        "प", "फ", "ब", "भ", "म", "य", "र", "ल", "व", "स", 
+                        "ष", "श", "ह", "क्ष", "त्र", "ज्ञ"},
+                {"का", "खा", "गा", "घा", "ङा","चा", "छा", "जा", "झा", "ञा",
+                        "टा", "ठा", "डा", "ढा", "णा", "ता", "था", "दा", "धा", "ना",
+                        "पा", "फा", "बा", "भा", "मा", "या", "रा", "ला", "वा", "सा",
+                        "षा", "शा", "हा", "क्षा", "त्रा", "ज्ञा"},
+                {"कि", "खि", "गि", "घि", "ङि","चि", "छि", "जि", "झि", "ञि",
+                        "टि", "ठि", "डि", "ढि", "णि", "ति", "थि", "दि", "धि", "नि",
+                        "पि", "फि", "बि", "भि", "मि", "यि", "रि", "लि", "वि", "सि",
+                        "षि", "शि", "हि", "क्षि", "त्रि", "ज्ञि"},
+                {"की", "खी", "गी", "घी", "ङी","ची", "छी", "जी", "झी", "ञी",
+                        "टी", "ठी", "डी", "ढी", "णी", "ती", "थी", "दी", "धी", "नी",
+                        "पी", "फी", "बी", "भी", "मी", "यी", "री", "ली", "वी", "सी",
+                        "षी", "शी", "ही", "क्षी", "त्री", "ज्ञी"},
+                {"कु", "खु", "गु", "घु", "ङु","चु", "छु", "जु", "झु", "ञु",
+                        "टु", "ठु", "डु", "ढु", "णु", "तु", "थु", "दु", "धु", "नु",
+                        "पु", "फु", "बु", "भु", "मु", "यु", "रु", "लु", "वु", "सु",
+                        "षु", "शु", "हु", "क्षु", "त्रु", "ज्ञु"},
+                {"कू", "खू", "गू", "घू", "ङू","चू", "छू", "जू", "झू", "ञू",
+                        "टू", "ठू", "डू", "ढू", "णू", "तू", "थू", "दू", "धू", "नू",
+                        "पू", "फू", "बू", "भू", "मू", "यू", "रू", "लू", "वू", "सू",
+                        "षू", "शू", "हू", "क्षू", "त्रू", "ज्ञू"},
+                {"के", "खे", "गे", "घे", "ङे","चे", "छे", "जे", "झे", "ञे",
+                        "टे", "ठे", "डे", "ढे", "णे", "ते", "थे", "दे", "धे", "ने",
+                        "पे", "फे", "बे", "भे", "मे", "ये", "रे", "ले", "वे", "से",
+                        "षे", "शे", "हे", "क्षे", "त्रे", "ज्ञे"},
+                {"कै", "खै", "गै", "घै", "ङै","चै", "छै", "जै", "झै", "ञै",
+                        "टै", "ठै", "डै", "ढै", "णै", "तै", "थै", "दै", "धै", "नै",
+                        "पै", "फै", "बै", "भै", "मै", "यै", "रै", "लै", "वै", "सै",
+                        "षै", "शै", "है", "क्षै", "त्रै", "ज्ञै"},
+                {"काे", "खाे", "गाे", "घाे", "ङाे","चाे", "छाे", "जाे", "झाे", "ञाे",
+                        "टाे", "ठाे", "डाे", "ढाे", "णाे", "ताे", "थाे", "दाे", "धाे", "नाे",
+                        "पाे", "फाे", "बाे", "भाे", "माे", "याे", "राे", "लाे", "वाे", "साे",
+                        "षाे", "शाे", "हाे", "क्षाे", "त्राे", "ज्ञाे"},
+                {"काै", "खाै", "गाै", "घाै", "ङाै","चाै", "छाै", "जाै", "झाै", "ञाै",
+                        "टाै", "ठाै", "डाै", "ढाै", "णाै", "ताै", "थाै", "दाै", "धाै", "नाै",
+                        "पाै", "फाै", "बाै", "भाै", "माै", "याै", "राै", "लाै", "वाै", "साै",
+                        "षाै", "शाै", "हाै", "क्षाै", "त्राै", "ज्ञाै"},
+                {"कं", "खं", "गं", "घं", "ङं","चं", "छं", "जं", "झं", "ञं",
+                        "टं", "ठं", "डं", "ढं", "णं", "तं", "थं", "दं", "धं", "नं",
+                        "पं", "फं", "बं", "भं", "मं", "यं", "रं", "लं", "वं", "सं",
+                        "षं", "शं", "हं", "क्षं", "त्रं", "ज्ञं"},
+                {"कः", "खः", "गः", "घः", "ङः","चः", "छः", "जः", "झः", "ञः",
+                        "टः", "ठः", "डः", "ढः", "णः", "तः", "थः", "दः", "धः", "नः",
+                        "पः", "फः", "बः", "भः", "मः", "यः", "रः", "लः", "वः", "सः",
+                        "षः", "शः", "हः", "क्षः", "त्रः", "ज्ञः"},
+                        
+
+
+        };
+
+        String [] [] NepCompounds = {
+                {"ka", "kha", "ga", "gha", "nga", "cha", "chha", "ja", "jha", "yna",
+                  "ta", "tha", "da", "dha", "na", "ta", "tha", "da", "dha", "na",
+                  "pa", "pha", "ba", "bha", "ma", "ya", "ra", "la", "wa", "sa",
+                  "khha", "sha", "ha", "chya", "tra", "gya"},
+                {"kaa", "khaa", "gaa", "ghaa", "ngaa", "chaa", "chhaa", "jaa", "jhaa", "ynaa",
+                        "taa", "thaa", "daa", "dhaa", "naa", "taa", "thaa", "daa", "dhaa", "naa",
+                        "paa", "phaa", "baa", "bhaa", "maa", "yaa", "raa", "laa", "waa", "saa",
+                        "khhaa", "shaa", "haa", "chyaa", "traa", "gyaa"},
+                {"ki", "khi", "gi", "ghi", "ngi", "chi", "chhi", "ji", "jhi", "yni",
+                        "ti", "thi", "di", "dhi", "ni", "ti", "thi", "di", "dhi", "ni",
+                        "pi", "phi", "bi", "bhi", "mi", "yi", "ri", "li", "wi", "si",
+                        "khhi", "shi", "hi", "chyi", "tri", "gyi"},
+                {"kee", "khee", "gee", "ghee", "ngee", "chee", "chhee", "jee", "jhee", "ynee",
+                        "tee", "thee", "dee", "dhee", "nee", "tee", "thee", "dee", "dhee", "nee",
+                        "pee", "phee", "bee", "bhee", "mee", "yee", "ree", "lee", "wee", "see",
+                        "khhee", "shee", "hee", "chyee", "tree", "gyee"},
+                {"ku", "khu", "gu", "ghu", "ngu", "chu", "chhu", "ju", "jhu", "ynu",
+                        "tu", "thu", "du", "dhu", "nu", "tu", "thu", "du", "dhu", "nu",
+                        "pu", "phu", "bu", "bhu", "mu", "yu", "ru", "lu", "wu", "su",
+                        "khhu", "shu", "hu", "chyu", "tru", "gyu"},
+                {"koo", "khoo", "goo", "ghoo", "ngoo", "choo", "chhoo", "joo", "jhoo", "ynoo",
+                        "too", "thoo", "doo", "dhoo", "noo", "too", "thoo", "doo", "dhoo", "noo",
+                        "poo", "phoo", "boo", "bhoo", "moo", "yoo", "roo", "loo", "woo", "soo",
+                        "khhoo", "shoo", "hoo", "chyoo", "troo", "gyoo"},
+                {"kae", "khae", "gae", "ghae", "ngae", "chae", "chhae", "jae", "jhae", "ynae",
+                        "tae", "thae", "dae", "dhae", "nae", "tae", "thae", "dae", "dhae", "nae",
+                        "pae", "phae", "bae", "bhae", "mae", "yae", "rae", "lae", "wae", "sae",
+                        "khhae", "shae", "hae", "chyae", "trae", "gyae"},
+                {"kaei", "khaei", "gaei", "ghaei", "ngaei", "chaei", "chhaei", "jaei", "jhaei", "ynaei",
+                        "taei", "thaei", "daei", "dhaei", "naei", "taei", "thaei", "daei", "dhaei", "naei",
+                        "paei", "phaei", "baei", "bhaei", "maei", "yaei", "raei", "laei", "waei", "saei",
+                        "khhaei", "shaei", "haei", "chyaei", "traei", "gyaei"},
+                {"ko", "kho", "go", "gho", "ngo", "cho", "chho", "jo", "jho", "yno",
+                        "to", "tho", "do", "dho", "no", "to", "tho", "do", "dho", "no",
+                        "po", "pho", "bo", "bho", "mo", "yo", "ro", "lo", "wo", "so",
+                        "khho", "sho", "ho", "chyo", "tro", "gyo"},
+                {"kou", "khou", "gou", "ghou", "ngou", "chou", "chhou", "jou", "jhou", "ynou",
+                        "tou", "thou", "dou", "dhou", "nou", "tou", "thou", "dou", "dhou", "nou",
+                        "pou", "phou", "bou", "bhou", "mou", "you", "rou", "lou", "wou", "sou",
+                        "khhou", "shou", "hou", "chyou", "trou", "gyou"},
+                {"kam", "kham", "gam", "gham", "ngam", "cham", "chham", "jam", "jham", "ynam",
+                        "tam", "tham", "dam", "dham", "nam", "tam", "tham", "dam", "dham", "nam",
+                        "pam", "pham", "bam", "bham", "mam", "yam", "ram", "lam", "wam", "sam",
+                        "khham", "sham", "ham", "chyam", "tram", "gyam"},
+                {"kah", "khah", "gah", "ghah", "ngah", "chah", "chhah", "jah", "jhah", "ynah",
+                        "tah", "thah", "dah", "dhah", "nah", "tah", "thah", "dah", "dhah", "nah",
+                        "pah", "phah", "bah", "bhah", "mah", "yah", "rah", "lah", "wah", "sah",
+                        "khhah", "shah", "hah", "chyah", "trah", "gyah"},
         };
 
 
@@ -288,13 +421,17 @@ public class DataLetters {
 
 
         for (int i = 0; i < DevConsonants.length; i++) {
-            data.add(new LetterWordModel(
-                            DevConsonants[i] ,
-                            NepaliConsonants[i],
-                            EnglishConsonants[i],
-                            /*Audio Resource*/
-                            Audio[i]
-                            /*Image Resource If any*/
+            data.add(new LetterModel(
+                    DevConsonants[i] ,
+                    NepaliConsonants[i],
+                    EnglishConsonants[i],
+                    DevCompounds[i],
+                    NepCompounds[i],
+                    Audio[i],
+                    Aspiration[i],
+                    Name[i],
+                    Pronunciation[i],
+                    approximatePronunciation[i]
 
 
                     )
@@ -304,9 +441,9 @@ public class DataLetters {
         return data;
     }
 
-    public static ArrayList<LetterWordModel> getNumbers() {
+    public static ArrayList<WordModel> getNumbers() {
 
-        ArrayList<LetterWordModel> data = new ArrayList<>();
+        ArrayList<WordModel> data = new ArrayList<>();
 
         String[] DevConsonants = {
                 "१", "२", "३", "४", "५", "६", "७", "८", "९", "१०",
@@ -337,29 +474,53 @@ public class DataLetters {
                 R.raw.number_ten,
 
                 R.raw.number_one,
-                R.raw.number_one,
-                R.raw.number_one,
-                R.raw.number_one,
-                R.raw.number_one,
-                R.raw.number_one,
-                R.raw.number_one,
-                R.raw.number_one,
-                R.raw.number_one,
-                R.raw.number_one,
+                R.raw.number_two,
+                R.raw.number_three,
+                R.raw.number_four,
+                R.raw.number_five,
+                R.raw.number_six,
+                R.raw.number_seven,
+                R.raw.number_eight,
+                R.raw.number_nine,
+                R.raw.number_ten
 
 
 
         };
 
 
+        int Image [] = {
+                R.drawable.number_one,
+                R.drawable.number_two,
+                R.drawable.number_three,
+                R.drawable.number_four,
+                R.drawable.number_five,
+                R.drawable.number_six,
+                R.drawable.number_seven,
+                R.drawable.number_eight,
+                R.drawable.number_nine,
+                R.drawable.number_ten,
+                R.drawable.number_one,
+                R.drawable.number_two,
+                R.drawable.number_three,
+                R.drawable.number_four,
+                R.drawable.number_five,
+                R.drawable.number_six,
+                R.drawable.number_seven,
+                R.drawable.number_eight,
+                R.drawable.number_nine,
+                R.drawable.number_ten
+        };
+
         for (int i = 0; i < DevConsonants.length; i++) {
-            data.add(new LetterWordModel(
+            data.add(new WordModel(
                             DevConsonants[i] ,
                             NepaliConsonants[i],
                             EnglishConsonants[i],
                             /*Audio Resource*/
-                            Audio[i]
+                            Audio[i],
                             /*Image Resource If any*/
+                            Image[i]
 
 
                     )
@@ -369,9 +530,9 @@ public class DataLetters {
         return data;
     }
 
-    public static ArrayList<LetterWordModel> getNotations() {
+    public static ArrayList<WordModel> getNotations() {
 
-        ArrayList<LetterWordModel> data = new ArrayList<>();
+        ArrayList<WordModel> data = new ArrayList<>();
 
         String[] DevConsonants = {
                 "१", "१०", "१००", "१०००", "१०,०००", "१००,०००", "१,००,०००", "१०,००,०००"
@@ -402,7 +563,7 @@ public class DataLetters {
 
 
         for (int i = 0; i < DevConsonants.length; i++) {
-            data.add(new LetterWordModel(
+            data.add(new WordModel(
                             DevConsonants[i] ,
                             NepaliConsonants[i],
                             EnglishConsonants[i],
@@ -417,8 +578,5 @@ public class DataLetters {
 
         return data;
     }
-
-
-
 
 }

@@ -1,10 +1,12 @@
 package com.momobites.prash.varnamaala.ModelAdapters;
 
+import java.util.ArrayList;
+
 /**
  * Created by prash on 6/22/2017.
  */
 
-public class ConsonantModel {
+public class LetterModel {
 
     /** String resource IDs */
     private String mNepaliId;
@@ -16,9 +18,6 @@ public class ConsonantModel {
     private String mName;
     private String mPronunciation;
     private String mApproxPronunciation;
-
-
-
     /*Compound Devnagari Letters*/
     private String [] mCompoundDevId;
     /*Compound Nepali Letters*/
@@ -30,12 +29,12 @@ public class ConsonantModel {
     private int mImageResourceId = NO_IMAGE_PROVIDED;
     private static final int NO_IMAGE_PROVIDED = -1;
 
-    /*ConsonantModel Object Constructor with no Image Handler*/
-    public ConsonantModel(String DevId, String NepId, String EngId,
-                          String [] CompoundDevResourceId,
-                          String [] CompoundNepResourceId,
-                          int audioResourceId,
-                          String Aspiration, String Name, String Pronunciation, String ApproxPronunciation){
+    /*LetterModel Object Constructor with no Image Handler*/
+    public LetterModel(String DevId, String NepId, String EngId,
+                       String [] CompoundDevResourceId,
+                       String [] CompoundNepResourceId,
+                       int audioResourceId,
+                       String Aspiration, String Name, String Pronunciation, String ApproxPronunciation){
         mDevId = DevId;
         mEnglishId = EngId;
         mNepaliId = NepId;
@@ -53,13 +52,13 @@ public class ConsonantModel {
 
     }
 
-    /*ConsonantModel Object Constructor with  Image Handler*/
-    public ConsonantModel(String DevId, String NepId, String EngId,
-                          String [] CompoundDevResourceId,
-                          String [] CompoundNepResourceId,
-                          int audioResourceId,
-                          int ImageResourceId,
-                          String Aspiration, String Name, String Pronunciation, String ApproxPronunciation){
+    /*LetterModel Object Constructor with  Image Handler*/
+    public LetterModel(String DevId, String NepId, String EngId,
+                       String [] CompoundDevResourceId,
+                       String [] CompoundNepResourceId,
+                       int audioResourceId,
+                       int ImageResourceId,
+                       String Aspiration, String Name, String Pronunciation, String ApproxPronunciation){
         mDevId = DevId;
         mEnglishId = EngId;
         mNepaliId = NepId;
@@ -79,8 +78,6 @@ public class ConsonantModel {
 
     }
 
-
-
     // Getter Methods
     public String getNepaliTranslationId() {
         return mNepaliId;
@@ -92,11 +89,18 @@ public class ConsonantModel {
         return mEnglishId;
     }
 
-    /*Get Item off the Devnagari array and return one at a time*/
-    public String getmDevCompoundId(int x) {
-        return mCompoundDevId[x];
+    // Array Compounds
+    public final String [] getmCompoundDevIdString(){
+        return mCompoundDevId;
+    }
+    public final String [] getmCompoundNepIdString(){
+        return mCompoundNepId;
     }
 
+    /*Get Item off the Devnagari array and return one at a time*/
+    public final String getmDevCompoundId(int x) {
+        return mCompoundDevId[x];
+    }
     /*Get Item off the Devnagari array and return one at a time*/
     public String getmNepCompoundId(int x) {
         return mCompoundNepId[x];

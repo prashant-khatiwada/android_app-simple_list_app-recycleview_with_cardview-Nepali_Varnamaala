@@ -17,7 +17,7 @@ public class MenuModel {
     private int mImageResourceId = NO_IMAGE_PROVIDED;
     private static final int NO_IMAGE_PROVIDED = -1;
 
-    /*ConsonantModel Object Constructor with no Image Handler*/
+    /*LetterModel Object Constructor with no Image Handler*/
     public MenuModel(String DevId, String NepId, String EngId,
                      Class ClassId){
         mDevId = DevId;
@@ -27,7 +27,7 @@ public class MenuModel {
 
     }
 
-    /*ConsonantModel Object Constructor with  Image Handler*/
+    /*LetterModel Object Constructor with  Image Handler*/
     public MenuModel(String DevId, String NepId, String EngId,
                      Class ClassId,
                           int ImageResourceId){

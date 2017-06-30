@@ -1,4 +1,4 @@
-package com.momobites.prash.varnamaala.CategoryOne;
+package com.momobites.prash.varnamaala.CategoryTwo;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -14,8 +14,11 @@ import android.view.View;
 import com.momobites.prash.varnamaala.ModelAdapters.MenuAdapter;
 import com.momobites.prash.varnamaala.R;
 
+/**
+ * Created by prash on 6/25/2017.
+ */
 
-public class CatOneActivity extends AppCompatActivity {
+public class CatTwoActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
     MenuAdapter adapter;
@@ -31,7 +34,7 @@ public class CatOneActivity extends AppCompatActivity {
         // Find and then Set Viewpager
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
         // Create Adapter for fragments
-        PageAdapter pageAdapter = new PageAdapter(getSupportFragmentManager(), CatOneActivity.this);
+        CatTwoActivity.PageAdapter pageAdapter = new CatTwoActivity.PageAdapter(getSupportFragmentManager(), CatTwoActivity.this);
         // Set in the adapter
         viewPager.setAdapter(pageAdapter);
 
@@ -43,25 +46,33 @@ public class CatOneActivity extends AppCompatActivity {
     }
 
 
-     class PageAdapter extends FragmentPagerAdapter {
+
+
+    class PageAdapter extends FragmentPagerAdapter {
+
+
+
 
         private Context mContext;
-        public PageAdapter(FragmentManager fm, CatOneActivity context) {
+
+        public PageAdapter(FragmentManager fm, CatTwoActivity context) {
             super(fm);
             mContext = context;
         }
+
         @Override
         public Fragment getItem(int position) {
 
             switch (position) {
                 case 0:
-                    return new Consonants();
+                    return new
+                            Time();
                 case 1:
-                    return new Vowels();
+                    return new Week();
                 case 2:
-                    return new Numbers();
+                    return new Month();
                 case 3:
-                    return new Notations();
+                    return new Season();
 
             }
 
@@ -70,10 +81,10 @@ public class CatOneActivity extends AppCompatActivity {
 
         // Set Tab Titles and the Number of Tabs
         String tabTitles[] = new String[]{
-                "Letters",
-                "Vowel",
-                "Number",
-                "Notation"
+                "Time",
+                "Week",
+                "Month",
+                "Season"
         };
 
         @Override
@@ -88,6 +99,8 @@ public class CatOneActivity extends AppCompatActivity {
         }
 
     }
+
+
 
 
 }

@@ -2,13 +2,10 @@ package com.momobites.prash.varnamaala.ModelAdapters;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.momobites.prash.varnamaala.R;
 
@@ -19,8 +16,6 @@ import java.util.List;
 import static android.media.CamcorderProfile.get;
 import static android.support.design.R.id.center;
 import static android.view.View.GONE;
-import static android.view.View.VISIBLE;
-import static com.momobites.prash.varnamaala.R.attr.colorPrimary;
 
 /**
  * Created by prash on 6/24/2017.
@@ -71,15 +66,15 @@ public class MenuAdapter extends RecyclerView.Adapter<ViewHolder> {
         viewHolder.DevgnagariWord.setText(list.get(position).getDevnagariId());
         viewHolder.EnglishWord.setText(list.get(position).getmEnglishId());
 
+        viewHolder.cv.setCardElevation(1);
+        viewHolder.cv.setPadding(0,0,0,0);
 
-
-        viewHolder.AdditionalDetail.setVisibility(GONE);
-        viewHolder.Compounnds.setVisibility(GONE);
+        viewHolder.AdditionalDetails.setVisibility(GONE);
+        viewHolder.btn_additional_details.setVisibility(GONE);
+        viewHolder.CompounndDetails.setVisibility(GONE);
         viewHolder.PrimaryImage.setVisibility(GONE);
-        viewHolder.btn_audio.setVisibility(GONE);
-        viewHolder.btn_compounds.setVisibility(GONE);
         viewHolder.DevgnagariWord.setTextSize(40);
-        viewHolder.DevgnagariWord.setGravity(center);
+
 
 
         // For Image
@@ -98,10 +93,8 @@ public class MenuAdapter extends RecyclerView.Adapter<ViewHolder> {
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 Intent myIntent = new Intent(context, list.get(position).getmMenuClassId());
                 context.startActivity(myIntent);
-
             }
         });
 

@@ -19,19 +19,21 @@ public class ViewHolder extends RecyclerView.ViewHolder {
     TextView DevgnagariWord;
     TextView EnglishWord;
 
-    /*Buttons*/
-    ImageView btn_audio;
-    ImageView btn_compounds;
+    TextView aspiration, name, pronunciation, approximatePronunciation;
 
-    /*Views*/
-    LinearLayout AdditionalDetail;
-    ConstraintLayout Constraint;
-    HorizontalScrollView Compounnds;
-    View listContainer;
-
+    /*Buttons ImageView*/
+    ImageView btn_additional_details;
     /*Image*/
     ImageView PrimaryImage;
     ImageView SecondaryImage;
+
+    /*Views*/
+    LinearLayout AdditionalDetails;
+    LinearLayout CardDetails;
+    HorizontalScrollView CompounndDetails;
+    LinearLayout row_listContainer;
+
+
     /*Additional Details*/
     TextView Aspiration;
     TextView Name;
@@ -73,33 +75,33 @@ public class ViewHolder extends RecyclerView.ViewHolder {
     public ViewHolder(View itemView) {
         super(itemView);
         cv = (CardView) itemView.findViewById(R.id.cardView);
+
+        /* Main Container View*/
+        row_listContainer = (LinearLayout) itemView.findViewById(R.id.container);
+
+        /*First Three Words/Letters*/
         NepaliWord = (TextView) itemView.findViewById(R.id.nep_textview);
         DevgnagariWord = (TextView) itemView.findViewById(R.id.dev_textview);
         EnglishWord = (TextView) itemView.findViewById(R.id.eng_textview);
 
         /*ImageView Buttons*/
-        btn_audio = (ImageView) itemView.findViewById(R.id.audio_btn);
-        btn_compounds = (ImageView) itemView.findViewById(R.id.compounds_btn);
-
+        btn_additional_details = (ImageView) itemView.findViewById(R.id.additional_details_btn);
         /*Image*/
         PrimaryImage = (ImageView) itemView.findViewById(R.id.imageView_primary);
         SecondaryImage = (ImageView) itemView.findViewById(R.id.imageView_secondary);
 
         /*Views*/
-        AdditionalDetail = (LinearLayout) itemView.findViewById(R.id.additional_details);
-        Compounnds = (HorizontalScrollView) itemView.findViewById(R.id.compounds);
-        Constraint = (ConstraintLayout) itemView.findViewById(R.id.imageView_holder);
+        AdditionalDetails = (LinearLayout) itemView.findViewById(R.id.additional_details);
+        CardDetails = (LinearLayout) itemView.findViewById(R.id.card_details);
+        CompounndDetails = (HorizontalScrollView) itemView.findViewById(R.id.compounds);
 
-        /*Container View*/
-        listContainer = itemView.findViewWithTag(R.id.container);
+        /*CardView Details*/
+        aspiration = (TextView) itemView.findViewById(R.id.aspiration);
+        name = (TextView) itemView.findViewById(R.id.name);
+        pronunciation = (TextView) itemView.findViewById(R.id.pronunciation);
+        approximatePronunciation = (TextView) itemView.findViewById(R.id.apprx_pronunciation);
 
-        /*Details*/
-        Aspiration = (TextView) itemView.findViewById(R.id.aspiration);
-        Name = (TextView) itemView.findViewById(R.id.name);
-        Pronunciation = (TextView) itemView.findViewById(R.id.pronunciation);
-        ApproximatePronunciation = (TextView) itemView.findViewById(R.id.apprx_pronunciation);
-
-        /*Compound Devnagari Words*/
+        /*Compound View Details Words*/
         K1 = (TextView) itemView.findViewById(R.id.compound_dev_01);
         K2 = (TextView) itemView.findViewById(R.id.compound_dev_02);
         K3 = (TextView) itemView.findViewById(R.id.compound_dev_03);

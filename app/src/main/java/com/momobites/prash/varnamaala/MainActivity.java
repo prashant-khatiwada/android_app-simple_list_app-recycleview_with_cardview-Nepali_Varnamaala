@@ -7,6 +7,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.momobites.prash.varnamaala.CategoryOne.CatOneActivity;
+import com.momobites.prash.varnamaala.CategoryThree.CatThreeActivity;
+import com.momobites.prash.varnamaala.CategoryTwo.CatTwoActivity;
 import com.momobites.prash.varnamaala.ModelAdapters.MenuAdapter;
 import com.momobites.prash.varnamaala.ModelAdapters.MenuModel;
 
@@ -40,20 +42,64 @@ public class MainActivity extends AppCompatActivity {
             ArrayList<MenuModel> data = new ArrayList<>();
 
 
-            String[] DevConsonants = { "वर्ण र अंक"
+            String[] DevConsonants = {
+                    "वर्ण र अंक",
+                    "समय",
+                    "स्थान",
+                    "सम्बन्ध",
+                    "चरा, जनावर, \n     माछा",
+                    "फूल र बिरुवा",
+                    "खाना र पेय \n    पदार्थ",
+                    "रंग",
+                    "पहिरन"
             };
 
-            String[] NepaliConsonants = { "barna ra anka"
+            String[] NepaliConsonants = {
+                    "barna ra anka",
+                    "samaya",
+                    "sthaan",
+                    "sambandha",
+                    "chara, janawar, machha",
+                    "phool ra biruwa",
+                    "khaana ra peya padartha",
+                    "ranga",
+                    "pahiran"
             };
 
-            String[] EnglishConsonants = { "Letters and Numbers"
+            String[] EnglishConsonants = {
+                    "Letters and Numbers",
+                    "Time",
+                    "Place",
+                    "People and Relations",
+                    "Animals, Birds, Fish",
+                    "Flowers and Plant",
+                    "Food and Drinks",
+                    "Colors",
+                    "Clothes"
             };
 
-            Class[] Class = { CatOneActivity.class
+            Class[] Class = {
+                    CatOneActivity.class,
+                    CatTwoActivity.class,
+                    CatOneActivity.class,
+                    CatTwoActivity.class,
+                    CatThreeActivity.class,
+                    CatOneActivity.class,
+                    CatTwoActivity.class,
+                    CatThreeActivity.class,
+                    CatOneActivity.class
             };
 
             int [] Image = {
-                    R.drawable.color_gray
+                    R.drawable.menu_icon_letter,
+                    R.drawable.menu_icon_time,
+                    R.drawable.menu_icon_marker,
+                    R.drawable.menu_icon_man,
+                    R.drawable.menu_icon_cow,
+                    R.drawable.menu_icon_flower,
+                    R.drawable.menu_icon_food,
+                    R.drawable.menu_icon_color,
+                    R.drawable.menu_icon_clothes
 
             };
 

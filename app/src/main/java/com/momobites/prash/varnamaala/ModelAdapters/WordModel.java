@@ -4,7 +4,7 @@ package com.momobites.prash.varnamaala.ModelAdapters;
  * Created by prash on 6/24/2017.
  */
 
-public class LetterWordModel {
+public class WordModel {
 
     /** String resource IDs */
     private String mNepaliId;
@@ -18,9 +18,9 @@ public class LetterWordModel {
     private int mImageResourceId = NO_IMAGE_PROVIDED;
     private static final int NO_IMAGE_PROVIDED = -1;
 
-    /*ConsonantModel Object Constructor with no Image Handler*/
-    public LetterWordModel(String DevId, String NepId, String EngId,
-                          int audioResourceId){
+    /*LetterModel Object Constructor with no Image Handler*/
+    public WordModel(String DevId, String NepId, String EngId,
+                     int audioResourceId){
         mDevId = DevId;
         mEnglishId = EngId;
         mNepaliId = NepId;
@@ -29,10 +29,10 @@ public class LetterWordModel {
 
     }
 
-    /*ConsonantModel Object Constructor with  Image Handler*/
-    public LetterWordModel(String DevId, String NepId, String EngId,
-                          int audioResourceId,
-                          int ImageResourceId){
+    /*LetterModel Object Constructor with  Image Handler*/
+    public WordModel(String DevId, String NepId, String EngId,
+                     int audioResourceId,
+                     int ImageResourceId){
         mDevId = DevId;
         mEnglishId = EngId;
         mNepaliId = NepId;

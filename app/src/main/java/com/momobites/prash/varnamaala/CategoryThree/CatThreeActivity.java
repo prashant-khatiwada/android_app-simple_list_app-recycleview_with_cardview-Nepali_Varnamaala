@@ -1,4 +1,4 @@
-package com.momobites.prash.varnamaala.CategoryOne;
+package com.momobites.prash.varnamaala.CategoryThree;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -11,11 +11,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
+import com.momobites.prash.varnamaala.Drawing.DrawBoardTopFragment;
 import com.momobites.prash.varnamaala.ModelAdapters.MenuAdapter;
 import com.momobites.prash.varnamaala.R;
 
 
-public class CatOneActivity extends AppCompatActivity {
+public class CatThreeActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
     MenuAdapter adapter;
@@ -31,7 +32,8 @@ public class CatOneActivity extends AppCompatActivity {
         // Find and then Set Viewpager
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
         // Create Adapter for fragments
-        PageAdapter pageAdapter = new PageAdapter(getSupportFragmentManager(), CatOneActivity.this);
+        CatThreeActivity.PageAdapter pageAdapter = new CatThreeActivity.PageAdapter(getSupportFragmentManager(),
+                CatThreeActivity.this);
         // Set in the adapter
         viewPager.setAdapter(pageAdapter);
 
@@ -43,25 +45,32 @@ public class CatOneActivity extends AppCompatActivity {
     }
 
 
-     class PageAdapter extends FragmentPagerAdapter {
+
+
+    class PageAdapter extends FragmentPagerAdapter {
+
+
+
 
         private Context mContext;
-        public PageAdapter(FragmentManager fm, CatOneActivity context) {
+
+        public PageAdapter(FragmentManager fm, CatThreeActivity context) {
             super(fm);
             mContext = context;
         }
+
         @Override
         public Fragment getItem(int position) {
 
             switch (position) {
                 case 0:
-                    return new Consonants();
+                    return new Animal();
                 case 1:
-                    return new Vowels();
+                    return new Bird();
                 case 2:
-                    return new Numbers();
+                    return new Fish();
                 case 3:
-                    return new Notations();
+                    return new DrawBoardTopFragment();
 
             }
 
@@ -70,10 +79,10 @@ public class CatOneActivity extends AppCompatActivity {
 
         // Set Tab Titles and the Number of Tabs
         String tabTitles[] = new String[]{
-                "Letters",
-                "Vowel",
-                "Number",
-                "Notation"
+                "Animal",
+                "Bird",
+                "Fish",
+                "Reptile"
         };
 
         @Override
@@ -90,4 +99,7 @@ public class CatOneActivity extends AppCompatActivity {
     }
 
 
+
+
 }
+
