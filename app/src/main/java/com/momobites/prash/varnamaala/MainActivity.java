@@ -6,9 +6,13 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
-import com.momobites.prash.varnamaala.CategoryOne.CatOneActivity;
-import com.momobites.prash.varnamaala.CategoryThree.CatThreeActivity;
-import com.momobites.prash.varnamaala.CategoryTwo.CatTwoActivity;
+import com.momobites.prash.varnamaala.Category07Seven.CatSevenActivity;
+import com.momobites.prash.varnamaala.Category03Place.CatThreeActivity;
+import com.momobites.prash.varnamaala.Category01One.CatOneActivity;
+import com.momobites.prash.varnamaala.Category06Six.CatSixActivity;
+import com.momobites.prash.varnamaala.Category04Four.CatFourActivity;
+import com.momobites.prash.varnamaala.Category05Three.CatFiveActivity;
+import com.momobites.prash.varnamaala.Category02Two.CatTwoActivity;
 import com.momobites.prash.varnamaala.ModelAdapters.MenuAdapter;
 import com.momobites.prash.varnamaala.ModelAdapters.MenuModel;
 
@@ -48,10 +52,9 @@ public class MainActivity extends AppCompatActivity {
                     "स्थान",
                     "सम्बन्ध",
                     "चरा, जनावर, \n     माछा",
-                    "फूल र बिरुवा",
                     "खाना र पेय \n    पदार्थ",
-                    "रंग",
-                    "पहिरन"
+                    "रंग,फूल,\n  बिरुवा"
+
             };
 
             String[] NepaliConsonants = {
@@ -60,10 +63,8 @@ public class MainActivity extends AppCompatActivity {
                     "sthaan",
                     "sambandha",
                     "chara, janawar, machha",
-                    "phool ra biruwa",
                     "khaana ra peya padartha",
-                    "ranga",
-                    "pahiran"
+                    "ranga, phool ra biruwa"
             };
 
             String[] EnglishConsonants = {
@@ -72,22 +73,19 @@ public class MainActivity extends AppCompatActivity {
                     "Place",
                     "People and Relations",
                     "Animals, Birds, Fish",
-                    "Flowers and Plant",
                     "Food and Drinks",
-                    "Colors",
-                    "Clothes"
+                    "Colors, Flowers and Plants"
+
             };
 
             Class[] Class = {
                     CatOneActivity.class,
                     CatTwoActivity.class,
-                    CatOneActivity.class,
-                    CatTwoActivity.class,
                     CatThreeActivity.class,
-                    CatOneActivity.class,
-                    CatTwoActivity.class,
-                    CatThreeActivity.class,
-                    CatOneActivity.class
+                    CatFourActivity.class,
+                    CatFiveActivity.class,
+                    CatSixActivity.class,
+                    CatSevenActivity.class
             };
 
             int [] Image = {
@@ -96,10 +94,8 @@ public class MainActivity extends AppCompatActivity {
                     R.drawable.menu_icon_marker,
                     R.drawable.menu_icon_man,
                     R.drawable.menu_icon_cow,
-                    R.drawable.menu_icon_flower,
                     R.drawable.menu_icon_food,
-                    R.drawable.menu_icon_color,
-                    R.drawable.menu_icon_clothes
+                    R.drawable.menu_icon_flower
 
             };
 

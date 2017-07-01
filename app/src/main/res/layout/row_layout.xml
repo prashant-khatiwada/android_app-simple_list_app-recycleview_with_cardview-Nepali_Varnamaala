@@ -19,7 +19,7 @@
         android:orientation="vertical">
 
 
-        <!--Primary Image View-->
+        <!--Nuclear Image View-->
         <ImageView
             android:id="@+id/imageView_primary"
             android:layout_width="match_parent"

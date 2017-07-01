@@ -1,30 +1,19 @@
 package com.momobites.prash.varnamaala.Drawing;
 
 import android.content.Context;
-import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
-import com.momobites.prash.varnamaala.Data.DataAnimals;
 import com.momobites.prash.varnamaala.ModelAdapters.DrawAdapter;
 import com.momobites.prash.varnamaala.ModelAdapters.LetterModel;
-import com.momobites.prash.varnamaala.ModelAdapters.WordAdapter;
 import com.momobites.prash.varnamaala.R;
 
 import java.util.ArrayList;
-
-/**
- * Created by prash on 6/30/2017.
- */
 
 public class DrawBoardTopFragment extends Fragment {
 
@@ -40,13 +29,6 @@ public class DrawBoardTopFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
-        DrawBoard activity = (DrawBoard) getActivity();
-        Intent i = activity.getIntent();
-        final String devWord = i.getStringExtra("DevWord");
-        final String [] DevCompoundStringFr = i.getStringArrayExtra("DevString");
-        final String [] NepCompoundStringFr = i.getStringArrayExtra("NepString");
-
 
         // Inflate layout for this Fragment
         View rootView = inflater.inflate(R.layout.activity_main, container, false);

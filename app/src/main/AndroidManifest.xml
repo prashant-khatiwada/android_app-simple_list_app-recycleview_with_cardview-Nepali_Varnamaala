@@ -19,17 +19,29 @@
         </activity>
 
 
-        <activity android:name=".CategoryOne.CatOneActivity"
+        <activity android:name=".Category01One.CatOneActivity"
             android:label="Letters and Numbers"/>
 
         <activity android:name=".Drawing.DrawBoard"
             android:label="Consonants and Vowels"/>
 
-        <activity android:name=".CategoryTwo.CatTwoActivity"
-            android:label="Relations"/>
+        <activity android:name=".Category02Two.CatTwoActivity"
+            android:label="Time"/>
 
-        <activity android:name=".CategoryThree.CatThreeActivity"
-            android:label="Animals and Bird"/>
+        <activity android:name=".Category05Three.CatFiveActivity"
+            android:label="Birds, Animal, Fish and Reptiles"/>
+
+        <activity android:name=".Category03Place.CatThreeActivity"
+            android:label="Places"/>
+
+        <activity android:name=".Category04Four.CatFourActivity"
+            android:label="Family, Friends and Relations"/>
+
+        <activity android:name=".Category06Six.CatSixActivity"
+            android:label="Food and Drinks"/>
+
+        <activity android:name=".Category07Seven.CatSevenActivity"
+            android:label="Colors, Flowers and Plant"/>
 
     </application>
 
