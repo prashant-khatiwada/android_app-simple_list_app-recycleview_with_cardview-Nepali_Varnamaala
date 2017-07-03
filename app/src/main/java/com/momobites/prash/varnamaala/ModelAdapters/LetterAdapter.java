@@ -111,7 +111,7 @@ public class LetterAdapter extends RecyclerView.Adapter<ViewHolder> {
         // Create and setup the {@link AudioManager} to request audio focus
         mAudioManager = (AudioManager) context.getSystemService(AUDIO_SERVICE);
 
-        viewHolder.CardDetails.setVisibility(VISIBLE);
+        viewHolder.CardDetails.setVisibility(GONE);
         viewHolder.PrimaryImage.setVisibility(GONE);
 
         viewHolder.aspiration.setText(list.get(position).getmAspiration());
@@ -137,6 +137,19 @@ public class LetterAdapter extends RecyclerView.Adapter<ViewHolder> {
 
         });
 
+
+        viewHolder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                if (viewHolder.CardDetails.getVisibility() == GONE) {
+                    viewHolder.CardDetails.setVisibility(VISIBLE);
+                }
+                else {
+                    viewHolder.CardDetails.setVisibility(GONE);
+                }
+                return true;
+            };
+        });
 
 
         /*On Item Click for Audio*/
