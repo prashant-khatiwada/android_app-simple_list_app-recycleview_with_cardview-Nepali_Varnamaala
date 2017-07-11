@@ -14,7 +14,6 @@ import java.util.Collections;
 import java.util.List;
 
 import static android.media.CamcorderProfile.get;
-import static android.support.design.R.id.center;
 import static android.view.View.GONE;
 
 /**
@@ -48,7 +47,7 @@ public class MenuAdapter extends RecyclerView.Adapter<ViewHolder> {
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(
-                parent.getContext()).inflate(R.layout.row_layout,
+                parent.getContext()).inflate(R.layout.list_layout,
                 parent,
                 false);
 
@@ -71,7 +70,7 @@ public class MenuAdapter extends RecyclerView.Adapter<ViewHolder> {
 
         viewHolder.AdditionalDetails.setVisibility(GONE);
         viewHolder.btn_additional_details.setVisibility(GONE);
-        viewHolder.CompounndDetails.setVisibility(GONE);
+        viewHolder.btn_draw.setVisibility(GONE);
         viewHolder.PrimaryImage.setVisibility(GONE);
         viewHolder.DevgnagariWord.setTextSize(40);
 

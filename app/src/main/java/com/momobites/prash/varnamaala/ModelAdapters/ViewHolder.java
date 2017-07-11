@@ -22,50 +22,14 @@ public class ViewHolder extends RecyclerView.ViewHolder {
     TextView aspiration, name, pronunciation, approximatePronunciation;
 
     /*Buttons ImageView*/
-    ImageView btn_additional_details;
+    ImageView btn_additional_details, btn_draw;
     /*Image*/
     ImageView PrimaryImage;
     ImageView SecondaryImage;
 
     /*Views*/
     LinearLayout AdditionalDetails;
-    LinearLayout CardDetails;
-    HorizontalScrollView CompounndDetails;
     LinearLayout row_listContainer;
-
-
-    /*Additional Details*/
-    TextView Aspiration;
-    TextView Name;
-    TextView Pronunciation;
-    TextView ApproximatePronunciation;
-    /*Compound Words Devnagari*/
-    TextView K1;
-    TextView K2;
-    TextView K3;
-    TextView K4;
-    TextView K5;
-    TextView K6;
-    TextView K7;
-    TextView K8;
-    TextView K9;
-    TextView K10;
-    TextView K11;
-    TextView K12;
-    /*Compound Words Nepali*/
-    TextView NepC1;
-    TextView NepC2;
-    TextView NepC3;
-    TextView NepC4;
-    TextView NepC5;
-    TextView NepC6;
-    TextView NepC7;
-    TextView NepC8;
-    TextView NepC9;
-    TextView NepC10;
-    TextView NepC11;
-    TextView NepC12;
-
 
     /*
     * The RecyclerView uses a ViewHolder to store the references to the relevant views for one
@@ -86,14 +50,13 @@ public class ViewHolder extends RecyclerView.ViewHolder {
 
         /*ImageView Buttons*/
         btn_additional_details = (ImageView) itemView.findViewById(R.id.additional_details_btn);
+        btn_draw = (ImageView) itemView.findViewById(R.id.draw_btn);
         /*Image*/
         PrimaryImage = (ImageView) itemView.findViewById(R.id.imageView_primary);
         SecondaryImage = (ImageView) itemView.findViewById(R.id.imageView_secondary);
 
         /*Views*/
         AdditionalDetails = (LinearLayout) itemView.findViewById(R.id.additional_details);
-        CardDetails = (LinearLayout) itemView.findViewById(R.id.card_details);
-        CompounndDetails = (HorizontalScrollView) itemView.findViewById(R.id.compounds);
 
         /*CardView Details*/
         aspiration = (TextView) itemView.findViewById(R.id.aspiration);
@@ -101,33 +64,6 @@ public class ViewHolder extends RecyclerView.ViewHolder {
         pronunciation = (TextView) itemView.findViewById(R.id.pronunciation);
         approximatePronunciation = (TextView) itemView.findViewById(R.id.apprx_pronunciation);
 
-        /*Compound View Details Words*/
-        K1 = (TextView) itemView.findViewById(R.id.compound_dev_01);
-        K2 = (TextView) itemView.findViewById(R.id.compound_dev_02);
-        K3 = (TextView) itemView.findViewById(R.id.compound_dev_03);
-        K4 = (TextView) itemView.findViewById(R.id.compound_dev_04);
-        K5 = (TextView) itemView.findViewById(R.id.compound_dev_05);
-        K6 = (TextView) itemView.findViewById(R.id.compound_dev_06);
-        K7 = (TextView) itemView.findViewById(R.id.compound_dev_07);
-        K8 = (TextView) itemView.findViewById(R.id.compound_dev_08);
-        K9 = (TextView) itemView.findViewById(R.id.compound_dev_09);
-        K10 = (TextView) itemView.findViewById(R.id.compound_dev_10);
-        K11 = (TextView) itemView.findViewById(R.id.compound_dev_11);
-        K12 = (TextView) itemView.findViewById(R.id.compound_dev_12);
-        
-        /*Compound Nepali Words*/
-        NepC1 = (TextView) itemView.findViewById(R.id.compound_nep_01);
-        NepC2 = (TextView) itemView.findViewById(R.id.compound_nep_02);
-        NepC3 = (TextView) itemView.findViewById(R.id.compound_nep_03);
-        NepC4 = (TextView) itemView.findViewById(R.id.compound_nep_04);
-        NepC5 = (TextView) itemView.findViewById(R.id.compound_nep_05);
-        NepC6 = (TextView) itemView.findViewById(R.id.compound_nep_06);
-        NepC7 = (TextView) itemView.findViewById(R.id.compound_nep_07);
-        NepC8 = (TextView) itemView.findViewById(R.id.compound_nep_08);
-        NepC9 = (TextView) itemView.findViewById(R.id.compound_nep_09);
-        NepC10 = (TextView) itemView.findViewById(R.id.compound_nep_10);
-        NepC11 = (TextView) itemView.findViewById(R.id.compound_nep_11);
-        NepC12 = (TextView) itemView.findViewById(R.id.compound_nep_12);
 
     }
 }

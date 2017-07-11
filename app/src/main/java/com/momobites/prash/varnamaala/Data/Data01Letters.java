@@ -67,11 +67,11 @@ public class Data01Letters {
         };
 
         String[] Pronunciation = {
-                "unaspirated voiceless velar stop", "aspirated voiceless velar stop", "unaspirated voiced velar stop" , "aspirated voiced velar stop", "velar nasal",
-                "unaspirated voiceless palatal stop", "aspirated voiceless palatal stop", "unaspirated voiced palatal stop" , "aspirated voiced palatal stop", "palatal nasal",
-                "anaspirated voiceless retroflex stop", "aspirated voiceless retroflex stop", "anaspirated voiced retroflex stop", "aspirated voiced retroflex stop", "retroflex nasal",
-                "anaspirated voiceless dental stop", "aspirated voiceless dental stop", "anaspirated voiced dental stop", "aspirated voiced dental stop", "dental nasal",
-                "anaspirated voiceless bilabial stop", "aspirated voiceless bilabial stop", "anaspirated voiced bilabial stop", "aspirated voiced bilabial stop", "bilabial nasal",
+                "unaspirated voiceless \n velar stop", "aspirated voiceless \n velar stop", "unaspirated voiced \n velar stop" , "aspirated voiced \n velar stop", "velar nasal",
+                "unaspirated voiceless \n palatal stop", "aspirated voiceless \n palatal stop", "unaspirated voiced \n palatal stop" , "aspirated voiced \n palatal stop", "palatal nasal",
+                "anaspirated voiceless \n retroflex stop", "aspirated voiceless \n retroflex stop", "anaspirated voiced \n retroflex stop", "aspirated voiced \n retroflex stop", "retroflex nasal",
+                "anaspirated voiceless \n dental stop", "aspirated voiceless \n dental stop", "anaspirated voiced \n dental stop", "aspirated voiced \n dental stop", "dental nasal",
+                "anaspirated voiceless \n bilabial stop", "aspirated voiceless \n bilabial stop", "anaspirated voiced \n bilabial stop", "aspirated voiced \n bilabial stop", "bilabial nasal",
                 "palatal glide", "alveolar liquid", "alveolar liquid", "velar glide", "palatal fricative",
                 "palatal retroflex", "dental fricative", "glottal fricative",
                 "complex segment (k+s+y)", "complex segment (t+r)", "complex segment (g+y)"

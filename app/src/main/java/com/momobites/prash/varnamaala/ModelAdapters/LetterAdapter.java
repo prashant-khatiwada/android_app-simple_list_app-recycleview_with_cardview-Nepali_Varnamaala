@@ -89,7 +89,7 @@ public class LetterAdapter extends RecyclerView.Adapter<ViewHolder> {
     * */
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_layout, parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_layout, parent, false);
         ViewHolder viewHolder = new ViewHolder(v);
         return viewHolder;
     }
@@ -111,9 +111,10 @@ public class LetterAdapter extends RecyclerView.Adapter<ViewHolder> {
         // Create and setup the {@link AudioManager} to request audio focus
         mAudioManager = (AudioManager) context.getSystemService(AUDIO_SERVICE);
 
-        viewHolder.CardDetails.setVisibility(GONE);
-        viewHolder.PrimaryImage.setVisibility(GONE);
 
+        viewHolder.btn_draw.setVisibility(VISIBLE);
+        viewHolder.PrimaryImage.setVisibility(GONE);
+        viewHolder.AdditionalDetails.setVisibility(GONE);
         viewHolder.aspiration.setText(list.get(position).getmAspiration());
         viewHolder.name.setText(list.get(position).getmName());
         viewHolder.pronunciation.setText(list.get(position).getmPronunciation());
@@ -122,6 +123,26 @@ public class LetterAdapter extends RecyclerView.Adapter<ViewHolder> {
 
         /*On ImageView Button Press - for Intent*/
         viewHolder.btn_additional_details.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (viewHolder.AdditionalDetails.getVisibility() == GONE) {
+                    viewHolder.AdditionalDetails.setVisibility(VISIBLE);
+                    viewHolder.btn_additional_details.setImageResource(R.drawable.icon_collapse);
+                }
+                else {
+                    viewHolder.AdditionalDetails.setVisibility(GONE);
+                    viewHolder.btn_additional_details.setImageResource(R.drawable.icon_expand);
+                }
+
+
+
+            }
+
+        });
+
+        /*On ImageView Button Press - for Intent*/
+        viewHolder.btn_draw.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -141,12 +162,14 @@ public class LetterAdapter extends RecyclerView.Adapter<ViewHolder> {
         viewHolder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                if (viewHolder.CardDetails.getVisibility() == GONE) {
-                    viewHolder.CardDetails.setVisibility(VISIBLE);
-                }
-                else {
-                    viewHolder.CardDetails.setVisibility(GONE);
-                }
+                Intent intent = new Intent(context, DrawBoard.class);
+                intent.putExtra("DevWord", list.get(position).getDevnagariId());
+                // Compounds
+                intent.putExtra("DevString", list.get(position).getmCompoundDevIdString());
+                intent.putExtra("NepString", list.get(position).getmCompoundNepIdString());
+
+                // Start Intent
+                context.startActivity(intent);
                 return true;
             };
         });

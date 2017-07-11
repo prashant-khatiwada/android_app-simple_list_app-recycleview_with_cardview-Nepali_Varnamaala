@@ -16,7 +16,6 @@ import java.util.List;
 
 import static android.content.Context.AUDIO_SERVICE;
 import static android.view.View.GONE;
-import static android.view.View.VISIBLE;
 
 
 /**
@@ -89,7 +88,7 @@ public class WordAdapter extends RecyclerView.Adapter<ViewHolder> {
     * */
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_layout, parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_layout, parent, false);
         ViewHolder viewHolder = new ViewHolder(v);
         return viewHolder;
     }

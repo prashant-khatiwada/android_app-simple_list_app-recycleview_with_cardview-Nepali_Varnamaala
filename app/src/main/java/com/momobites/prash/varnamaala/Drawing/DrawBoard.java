@@ -6,14 +6,15 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.HorizontalScrollView;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.momobites.prash.varnamaala.ModelAdapters.DrawAdapter;
 import com.momobites.prash.varnamaala.R;
 
-import static android.view.View.GONE;
+import static com.momobites.prash.varnamaala.ModelAdapters.DrawAdapter.devnagari_word;
+import static com.momobites.prash.varnamaala.ModelAdapters.DrawAdapter.getDevnagari_word;
 
 public class DrawBoard extends AppCompatActivity {
 
@@ -23,93 +24,50 @@ public class DrawBoard extends AppCompatActivity {
     private ImageButton currPaint, drawBtn, eraseBtn, resetBtn;
     //brush sizes
     private float smallBrush, mediumBrush, largeBrush;
-    //  Layout
-    HorizontalScrollView compound;
+
+    public static String devWord = null;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.single_letter_card);
+        setContentView(R.layout.draw_card);
 
+        // Getting Intent from Letter Adapter
         Intent i = getIntent();
-        final String devWord = i.getStringExtra("DevWord");
-        final String [] DevCompoundString = i.getStringArrayExtra("DevString");
-        final String [] NepCompoundString = i.getStringArrayExtra("NepString");
+        final String[] DevCompoundString = i.getStringArrayExtra("DevString");
+        final String[] NepCompoundString = i.getStringArrayExtra("NepString");
 
 
+        // SEND DATA TO FRAGMENTS - TOP FRAGMENT
+        // pack the data to be shown
+        Bundle bundle = new Bundle();
+        bundle.putStringArray("DEV_KEY", DevCompoundString);
+        bundle.putStringArray("NEP_KEY", NepCompoundString);
 
-
-        compound = (HorizontalScrollView) findViewById(R.id.compounds);
-        compound.setVisibility(GONE);
-
-
-        // Find and fix views to its xml place
-        final TextView DevnagariWord = (TextView) findViewById(R.id.dev_textview);
-        // Compounds Devnagari
-        TextView DevnagariWord01 = (TextView) findViewById(R.id.compound_dev_01);
-        TextView DevnagariWord02 = (TextView) findViewById(R.id.compound_dev_02);
-        TextView DevnagariWord03 = (TextView) findViewById(R.id.compound_dev_03);
-        TextView DevnagariWord04 = (TextView) findViewById(R.id.compound_dev_04);
-        TextView DevnagariWord05 = (TextView) findViewById(R.id.compound_dev_05);
-        TextView DevnagariWord06 = (TextView) findViewById(R.id.compound_dev_06);
-        TextView DevnagariWord07 = (TextView) findViewById(R.id.compound_dev_07);
-        TextView DevnagariWord08 = (TextView) findViewById(R.id.compound_dev_08);
-        TextView DevnagariWord09 = (TextView) findViewById(R.id.compound_dev_09);
-        TextView DevnagariWord10 = (TextView) findViewById(R.id.compound_dev_10);
-        TextView DevnagariWord11 = (TextView) findViewById(R.id.compound_dev_11);
-        TextView DevnagariWord12 = (TextView) findViewById(R.id.compound_dev_12);
-        // Compounds Nepali
-        TextView NepaliWord01 = (TextView) findViewById(R.id.compound_nep_01);
-        TextView NepaliWord02 = (TextView) findViewById(R.id.compound_nep_02);
-        TextView NepaliWord03 = (TextView) findViewById(R.id.compound_nep_03);
-        TextView NepaliWord04 = (TextView) findViewById(R.id.compound_nep_04);
-        TextView NepaliWord05 = (TextView) findViewById(R.id.compound_nep_05);
-        TextView NepaliWord06 = (TextView) findViewById(R.id.compound_nep_06);
-        TextView NepaliWord07 = (TextView) findViewById(R.id.compound_nep_07);
-        TextView NepaliWord08 = (TextView) findViewById(R.id.compound_nep_08);
-        TextView NepaliWord09 = (TextView) findViewById(R.id.compound_nep_09);
-        TextView NepaliWord10 = (TextView) findViewById(R.id.compound_nep_10);
-        TextView NepaliWord11 = (TextView) findViewById(R.id.compound_nep_11);
-        TextView NepaliWord12 = (TextView) findViewById(R.id.compound_nep_12);
-
-
-        // Set the Data on each View
-        DevnagariWord.setText(devWord);
-
-        // Compound Devnagari
-        DevnagariWord01.setText(DevCompoundString[0]);
-        DevnagariWord02.setText(DevCompoundString[1]);
-        DevnagariWord03.setText(DevCompoundString[2]);
-        DevnagariWord04.setText(DevCompoundString[3]);
-        DevnagariWord05.setText(DevCompoundString[4]);
-        DevnagariWord06.setText(DevCompoundString[5]);
-        DevnagariWord07.setText(DevCompoundString[6]);
-        DevnagariWord08.setText(DevCompoundString[7]);
-        DevnagariWord09.setText(DevCompoundString[8]);
-        DevnagariWord10.setText(DevCompoundString[9]);
-        DevnagariWord11.setText(DevCompoundString[10]);
-        DevnagariWord12.setText(DevCompoundString[11]);
-        // Compound Nepali
-        NepaliWord01.setText(NepCompoundString[0]);
-        NepaliWord02.setText(NepCompoundString[1]);
-        NepaliWord03.setText(NepCompoundString[2]);
-        NepaliWord04.setText(NepCompoundString[3]);
-        NepaliWord05.setText(NepCompoundString[4]);
-        NepaliWord06.setText(NepCompoundString[5]);
-        NepaliWord07.setText(NepCompoundString[6]);
-        NepaliWord08.setText(NepCompoundString[7]);
-        NepaliWord09.setText(NepCompoundString[8]);
-        NepaliWord10.setText(NepCompoundString[9]);
-        NepaliWord11.setText(NepCompoundString[10]);
-        NepaliWord12.setText(NepCompoundString[11]);
-
+        // calling out a specific fragment
+        DrawBoardTopFragment firstFragment = new DrawBoardTopFragment();
+        // put the data in bundle
+        firstFragment.setArguments(bundle);
 
         // Inserting a specific Fragment
-        DrawBoardTopFragment firstFragment = new DrawBoardTopFragment();
         FragmentManager manager = getSupportFragmentManager();
         manager.beginTransaction()
                 .replace(R.id.topPanelFragment, firstFragment, firstFragment.getTag())
                 .commit();
+
+
+        // Find and fix views to its xml place
+        TextView DevnagariWord = (TextView) findViewById(R.id.dev_textview);
+        // Set the Data on each View
+
+
+        if (devWord == null){
+            devWord = i.getStringExtra("DevWord");
+            DevnagariWord.setText(devWord);
+        } else {
+            DevnagariWord.setText(getDevnagari_word());
+        }
 
 
         //get drawing view
@@ -235,9 +193,7 @@ public class DrawBoard extends AppCompatActivity {
                     }
                 });
 
-
                 brushDialog.show();
-
 
             }
         });
@@ -272,7 +228,6 @@ public class DrawBoard extends AppCompatActivity {
             currPaint = (ImageButton) view;
         }
     }
-
 
 
 }
